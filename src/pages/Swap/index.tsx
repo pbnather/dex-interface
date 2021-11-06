@@ -1,4 +1,4 @@
-import { CurrencyAmount, JSBI, Token, Trade } from '@morpheusswap/sdk'
+import { CurrencyAmount, JSBI, Token, Trade } from 'morph-sdk'
 import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react'
 import { ArrowDown } from 'react-feather'
 import { CardBody, ArrowDownIcon, Button, IconButton, Text } from 'trinityhelper'
@@ -345,7 +345,7 @@ const Swap = () => {
                       style={{ borderRadius: '50%' }}
                       scale="sm"
                     >
-                      <ArrowDownIcon color="primary" width="24px" />
+                      <ArrowDownIcon color="textSubtle" width="24px" />
                     </IconButton>
                   </ArrowWrapper>
                   {recipient === null && !showWrap && isExpertMode ? (
@@ -423,7 +423,7 @@ const Swap = () => {
                     onClick={approveCallback}
                     disabled={approval !== ApprovalState.NOT_APPROVED || approvalSubmitted}
                     style={{ width: '48%' }}
-                    variant={approval === ApprovalState.APPROVED ? 'success' : 'primary'}
+                    variant={approval === ApprovalState.APPROVED ? 'success' : 'tertiary'}
                   >
                     {approval === ApprovalState.PENDING ? (
                       <AutoRow gap="6px" justify="center">
@@ -454,7 +454,7 @@ const Swap = () => {
                     disabled={
                       !isValid || approval !== ApprovalState.APPROVED || (priceImpactSeverity > 3 && !isExpertMode)
                     }
-                    variant={isValid && priceImpactSeverity > 2 ? 'danger' : 'primary'}
+                    variant={isValid && priceImpactSeverity > 2 ? 'danger' : 'tertiary'}
                   >
                     {priceImpactSeverity > 3 && !isExpertMode
                       ? `Price Impact High`
@@ -478,7 +478,7 @@ const Swap = () => {
                   }}
                   id="swap-button"
                   disabled={!isValid || (priceImpactSeverity > 3 && !isExpertMode) || !!swapCallbackError}
-                  variant={isValid && priceImpactSeverity > 2 && !swapCallbackError ? 'danger' : 'primary'}
+                  variant={isValid && priceImpactSeverity > 2 && !swapCallbackError ? 'danger' : 'tertiary'}
                 >
                   {swapInputError ||
                     (priceImpactSeverity > 3 && !isExpertMode

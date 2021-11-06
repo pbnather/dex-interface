@@ -1,4 +1,4 @@
-import { Token, TokenAmount } from '@morpheusswap/sdk'
+import { Token, TokenAmount } from 'morph-sdk'
 import { useMemo } from 'react'
 
 import { useTokenContract } from '../hooks/useContract'

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Currency, Percent, Price } from '@morpheusswap/sdk'
+import { Currency, Percent, Price } from 'morph-sdk'
 import { Text } from 'trinityhelper'
 import { AutoColumn } from '../../components/Column'
 import { AutoRow } from '../../components/Row'

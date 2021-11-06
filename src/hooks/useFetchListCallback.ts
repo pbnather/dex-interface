@@ -1,5 +1,5 @@
 import { nanoid } from '@reduxjs/toolkit'
-// import { ChainId } from '@morpheusswap/sdk'
+import { ChainId } from 'morph-sdk'
 import { TokenList } from '@uniswap/token-lists'
 import { useCallback } from 'react'
 import { useDispatch } from 'react-redux'
@@ -9,11 +9,6 @@ import { fetchTokenList } from '../state/lists/actions'
 import getTokenList from '../utils/getTokenList'
 import resolveENSContentHash from '../utils/resolveENSContentHash'
 import { useActiveWeb3React } from './index'
-
-declare enum ChainId {
-  MAINNET = 250,
-  BSCTESTNET = 4002
-}
 
 export function useFetchListCallback(): (listUrl: string) => Promise<TokenList> {
   const { chainId, library } = useActiveWeb3React()

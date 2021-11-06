@@ -1,4 +1,4 @@
-import { Currency, ETHER, Token } from '@morpheusswap/sdk'
+import { Currency, ETHER, Token } from 'morph-sdk'
 import React, { useMemo } from 'react'
 import styled from 'styled-components'
 import useHttpLocations from '../../hooks/useHttpLocations'

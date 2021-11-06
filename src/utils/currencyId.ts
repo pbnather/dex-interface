@@ -1,4 +1,4 @@
-import { Currency, ETHER, Token } from '@morpheusswap/sdk'
+import { Currency, ETHER, Token } from 'morph-sdk'
 
 export function currencyId(currency: Currency): string {
   if (currency === ETHER) return 'ETH'

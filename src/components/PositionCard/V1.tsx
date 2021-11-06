@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link, RouteComponentProps, withRouter } from 'react-router-dom'
-import { Token, TokenAmount, WETH } from '@morpheusswap/sdk'
+import { Token, TokenAmount, WETH } from 'morph-sdk'
 import { Button, Text } from 'trinityhelper'
 import { AutoColumn } from '../Column'
 import { RowBetween, RowFixed } from '../Row'

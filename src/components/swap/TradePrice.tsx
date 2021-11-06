@@ -1,5 +1,5 @@
 import React from 'react'
-import { Price } from '@morpheusswap/sdk'
+import { Price } from 'morph-sdk'
 import { SyncAltIcon, Text } from 'trinityhelper'
 import { StyledBalanceMaxMini } from './styleds'
 
@@ -23,7 +23,7 @@ export default function TradePrice({ price, showInverted, setShowInverted }: Tra
         <>
           {formattedPrice ?? '-'} {label}
           <StyledBalanceMaxMini onClick={() => setShowInverted(!showInverted)}>
-            <SyncAltIcon width="20px" color="primary" />
+            <SyncAltIcon width="20px" color="textSubtle" />
           </StyledBalanceMaxMini>
         </>
       ) : (

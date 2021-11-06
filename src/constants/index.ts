@@ -1,6 +1,6 @@
-import { JSBI, Percent, Token } from '@morpheusswap/sdk'
+import { JSBI, Percent, Token } from 'morph-sdk'
 
-export const ROUTER_ADDRESS = '0x16327E3FbDaCA3bcF7E38F5Af2599D2DDc33aE52'
+export const ROUTER_ADDRESS = '0x8aC868293D97761A1fED6d4A01E9FF17C5594Aa3'
 
 export declare enum ChainId {
   MAINNET = 250,

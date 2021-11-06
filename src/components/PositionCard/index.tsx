@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { JSBI, Pair, Percent } from '@morpheusswap/sdk'
+import { JSBI, Pair, Percent } from 'morph-sdk'
 import { Button, Card as UIKitCard, CardBody, Text } from 'trinityhelper'
 import { darken } from 'polished'
 import { ChevronDown, ChevronUp } from 'react-feather'

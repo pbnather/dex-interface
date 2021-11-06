@@ -1,9 +1,10 @@
+/* eslint-disable */ 
 import React, { useCallback, useContext, useMemo, useState } from 'react'
 import styled, { ThemeContext } from 'styled-components'
 import { splitSignature } from '@ethersproject/bytes'
 import { Contract } from '@ethersproject/contracts'
 import { TransactionResponse } from '@ethersproject/providers'
-import { Currency, currencyEquals, ETHER, Percent, WETH } from '@morpheusswap/sdk'
+import { Currency, currencyEquals, ETHER, Percent, WETH } from 'morph-sdk'
 import { Button, Flex, Text } from 'trinityhelper'
 import { ArrowDown, Plus } from 'react-feather'
 import { RouteComponentProps } from 'react-router'
@@ -123,7 +124,7 @@ export default function RemoveLiquidity({
       { name: 'verifyingContract', type: 'address' },
     ]
     const domain = {
-      name: 'Pancake LPs',
+      name: 'Morpheus LPs',
       version: '1',
       chainId,
       verifyingContract: pair.liquidityToken.address,
@@ -360,7 +361,7 @@ export default function RemoveLiquidity({
     return (
       <>
         <RowBetween>
-          <Text color="textSubtle">{`FLIP ${currencyA?.symbol}/${currencyB?.symbol}`} Burned</Text>
+          <Text color="textSubtle">{`mLP ${currencyA?.symbol}/${currencyB?.symbol}`} Burned</Text>
           <RowFixed>
             <DoubleCurrencyLogo currency0={currencyA} currency1={currencyB} margin />
             <Text>{parsedAmounts[Field.LIQUIDITY]?.toSignificant(6)}</Text>
@@ -542,7 +543,7 @@ export default function RemoveLiquidity({
                                 currencyB === ETHER ? WETH[chainId].address : currencyIdB
                               }`}
                             >
-                              Receive WBNB
+                              Receive WFTM
                             </StyledInternalLink>
                           ) : oneCurrencyIsWETH ? (
                             <StyledInternalLink
@@ -550,7 +551,7 @@ export default function RemoveLiquidity({
                                 currencyA && currencyEquals(currencyA, WETH[chainId]) ? 'ETH' : currencyIdA
                               }/${currencyB && currencyEquals(currencyB, WETH[chainId]) ? 'ETH' : currencyIdB}`}
                             >
-                              Receive BNB
+                              Receive FTM
                             </StyledInternalLink>
                           ) : null}
                         </RowBetween>

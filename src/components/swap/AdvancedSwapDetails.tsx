@@ -1,5 +1,5 @@
 import React from 'react'
-import { Trade, TradeType } from '@morpheusswap/sdk'
+import { Trade, TradeType } from 'morph-sdk'
 import { Card, CardBody, Text } from 'trinityhelper'
 import { Field } from '../../state/swap/actions'
 import { useUserSlippageTolerance } from '../../state/user/hooks'
@@ -44,8 +44,8 @@ function TradeSummary({ trade, allowedSlippage }: { trade: Trade; allowedSlippag
 
         <RowBetween>
           <RowFixed>
-            <Text fontSize="14px">Liquidity Provider Fee</Text>
-            <QuestionHelper text="For each trade a 0.2% fee is paid. 0.17% goes to liquidity providers and 0.03% goes to the PancakeSwap treasury." />
+            <Text fontSize="14px">Swap Fee</Text>
+            <QuestionHelper text="For each trade a 0.15% fee is paid. 60% of all protocol revenue is distributed back to our holders." />
           </RowFixed>
           <Text fontSize="14px">
             {realizedLPFee ? `${realizedLPFee.toSignificant(4)} ${trade.inputAmount.currency.symbol}` : '-'}

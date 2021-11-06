@@ -4,7 +4,7 @@ import { AddressZero } from '@ethersproject/constants'
 import { JsonRpcSigner, Web3Provider } from '@ethersproject/providers'
 import { BigNumber } from '@ethersproject/bignumber'
 import { abi as IUniswapV2Router02ABI } from '@uniswap/v2-periphery/build/IUniswapV2Router02.json'
-import { JSBI, Percent, Token, CurrencyAmount, Currency, ETHER } from '@morpheusswap/sdk'
+import { JSBI, Percent, Token, CurrencyAmount, Currency, ETHER } from 'morph-sdk'
 import { ROUTER_ADDRESS } from '../constants'
 import { TokenAddressMap } from '../state/lists/hooks'
 

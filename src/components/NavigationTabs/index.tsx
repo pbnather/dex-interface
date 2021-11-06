@@ -28,7 +28,7 @@ const StyledAbsoluteLink = styled.a`
   outline: none;
   cursor: pointer;
   text-decoration: none;
-  color: ${({ theme }) => theme.colors.textDisabled};
+  color: ${({ theme }) => theme.colors.textSubtle};
   font-size: 20px;
 
   &.${activeClassName} {
@@ -55,7 +55,7 @@ const StyledNavLink = styled(NavLink).attrs({
   outline: none;
   cursor: pointer;
   text-decoration: none;
-  color: ${({ theme }) => theme.colors.textDisabled};
+  color: ${({ theme }) => theme.colors.textSubtle};
   font-size: 20px;
 
   &.${activeClassName} {

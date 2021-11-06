@@ -1,4 +1,4 @@
-import { Currency, ETHER, JSBI, TokenAmount } from '@morpheusswap/sdk'
+import { Currency, ETHER, JSBI, TokenAmount } from 'morph-sdk'
 import React, { useCallback, useEffect, useState } from 'react'
 import { Button, ChevronDownIcon, AddIcon, CardBody, Text } from 'trinityhelper'
 import CardNav from 'components/CardNav'
@@ -83,6 +83,7 @@ export default function PoolFinder() {
         <CardBody>
           <AutoColumn gap="md">
             <Button
+              variant='tertiary'
               onClick={() => {
                 setShowSearch(true)
                 setActiveField(Fields.TOKEN0)
@@ -99,6 +100,7 @@ export default function PoolFinder() {
             </ColumnCenter>
 
             <Button
+              variant='tertiary'
               onClick={() => {
                 setShowSearch(true)
                 setActiveField(Fields.TOKEN1)

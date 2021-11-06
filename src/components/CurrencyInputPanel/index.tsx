@@ -1,5 +1,5 @@
 import React, { useState, useCallback } from 'react'
-import { Currency, Pair } from '@morpheusswap/sdk'
+import { Currency, Pair } from 'morph-sdk'
 import { Button, ChevronDownIcon, Text } from 'trinityhelper'
 import styled from 'styled-components'
 import { darken } from 'polished'

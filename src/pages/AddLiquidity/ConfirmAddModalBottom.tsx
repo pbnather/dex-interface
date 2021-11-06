@@ -1,4 +1,4 @@
-import { Currency, CurrencyAmount, Fraction, Percent } from '@morpheusswap/sdk'
+import { Currency, CurrencyAmount, Fraction, Percent } from 'morph-sdk'
 import React from 'react'
 import { Button } from 'trinityhelper'
 import { RowBetween, RowFixed } from '../../components/Row'

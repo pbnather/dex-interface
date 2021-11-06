@@ -1,4 +1,4 @@
-import { CurrencyAmount, ETHER, JSBI } from '@morpheusswap/sdk'
+import { CurrencyAmount, ETHER, JSBI } from 'morph-sdk'
 import { MIN_ETH } from '../constants'
 
 /**

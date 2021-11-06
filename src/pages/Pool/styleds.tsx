@@ -9,7 +9,7 @@ export const ClickableText = styled(Text)`
   :hover {
     cursor: pointer;
   }
-  color: ${({ theme }) => theme.colors.primary};
+  color: ${({ theme }) => theme.colors.textSubtle};
 `
 export const MaxButton = styled.button<{ width: string }>`
   padding: 0.5rem 1rem;

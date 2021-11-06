@@ -43,7 +43,7 @@ export const ContentHeader = ({ children, onDismiss }: ContentHeaderProps) => (
   <StyledContentHeader>
     <Heading>{children}</Heading>
     <IconButton onClick={onDismiss} variant="text">
-      <CloseIcon color="primary" />
+      <CloseIcon color="textSubtle" />
     </IconButton>
   </StyledContentHeader>
 )

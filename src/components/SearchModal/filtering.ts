@@ -1,4 +1,4 @@
-import { Token } from '@morpheusswap/sdk'
+import { Token } from 'morph-sdk'
 import { isAddress } from '../../utils'
 
 export function filterTokens(tokens: Token[], search: string): Token[] {

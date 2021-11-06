@@ -1,4 +1,4 @@
-import { ChainId, JSBI, Pair, Route, Token, TokenAmount, Trade, TradeType } from '@morpheusswap/sdk'
+import { ChainId, JSBI, Pair, Route, Token, TokenAmount, Trade, TradeType } from 'morph-sdk'
 import { computeTradePriceBreakdown } from './prices'
 
 describe('prices', () => {

@@ -1,4 +1,4 @@
-import { currencyEquals, Trade } from '@morpheusswap/sdk'
+import { currencyEquals, Trade } from 'morph-sdk'
 import React, { useCallback, useMemo } from 'react'
 import TransactionConfirmationModal, {
   ConfirmationModalContent,

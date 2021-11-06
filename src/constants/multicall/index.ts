@@ -1,4 +1,4 @@
-import { ChainId } from '@morpheusswap/sdk'
+import { ChainId } from 'morph-sdk'
 import MULTICALL_ABI from './abi.json'
 
 const MULTICALL_NETWORKS: { [chainId in ChainId]: string } = {

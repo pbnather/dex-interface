@@ -1,4 +1,4 @@
-import { Currency, CurrencyAmount, ETHER, Token, TokenAmount, WETH } from '@morpheusswap/sdk'
+import { Currency, CurrencyAmount, ETHER, Token, TokenAmount, WETH } from 'morph-sdk'
 
 declare enum ChainId {
   MAINNET = 250,

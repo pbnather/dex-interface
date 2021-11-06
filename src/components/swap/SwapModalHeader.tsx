@@ -1,6 +1,6 @@
 import React, { useContext, useMemo } from 'react'
 import styled, { ThemeContext } from 'styled-components'
-import { Trade, TradeType } from '@morpheusswap/sdk'
+import { Trade, TradeType } from 'morph-sdk'
 import { Button, Text } from 'trinityhelper'
 import { ArrowDown, AlertTriangle } from 'react-feather'
 
@@ -96,7 +96,7 @@ export default function SwapModalHeader({
           <RowBetween>
             <RowFixed>
               <AlertTriangle size={20} style={{ marginRight: '8px', minWidth: 24 }} />
-              <Main color={theme.colors.primary}> Price Updated</Main>
+              <Main color={theme.colors.textSubtle}> Price Updated</Main>
             </RowFixed>
             <Button onClick={onAcceptChanges}>Accept</Button>
           </RowBetween>

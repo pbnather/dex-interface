@@ -1,6 +1,6 @@
 import React, { useContext, useMemo } from 'react'
 import { ThemeContext } from 'styled-components'
-import { Pair } from '@morpheusswap/sdk'
+import { Pair } from 'morph-sdk'
 import { Button, CardBody, Text } from 'trinityhelper'
 import { Link } from 'react-router-dom'
 import CardNav from 'components/CardNav'
@@ -85,13 +85,13 @@ export default function Pool() {
 
               {!account ? (
                 <LightCard padding="40px">
-                  <Body color={theme.colors.textDisabled} textAlign="center">
+                  <Body color={theme.colors.textSubtle} textAlign="center">
                     Connect to a wallet to view your liquidity.
                   </Body>
                 </LightCard>
               ) : v2IsLoading ? (
                 <LightCard padding="40px">
-                  <Body color={theme.colors.textDisabled} textAlign="center">
+                  <Body color={theme.colors.textSubtle} textAlign="center">
                     <Dots>Loading</Dots>
                   </Body>
                 </LightCard>
@@ -103,7 +103,7 @@ export default function Pool() {
                 </>
               ) : (
                 <LightCard padding="40px">
-                  <Body color={theme.colors.textDisabled} textAlign="center">
+                  <Body color={theme.colors.textSubtle} textAlign="center">
                     <TranslatedText translationId={104}>No liquidity found.</TranslatedText>
                   </Body>
                 </LightCard>
@@ -119,7 +119,7 @@ export default function Pool() {
                   </StyledInternalLink>
                 </Text>
                 <Text fontSize="14px" style={{ padding: '.5rem 0 .5rem 0' }}>
-                  Or, if you staked your FLIP tokens in a farm, unstake them to see them here.
+                  Or, if you staked your mLP tokens in a farm, unstake them to see them here.
                 </Text>
               </div>
             </AutoColumn>
