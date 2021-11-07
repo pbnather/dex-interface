@@ -90,7 +90,7 @@ export default function SwapModalFooter({
         <RowBetween>
           <RowFixed>
             <Text fontSize="14px">Swap Fee</Text>
-            <QuestionHelper text="For each trade a 0.2% fee is paid. 60% of all protocol revenue is distributed back to our holders." />
+            <QuestionHelper text="For each trade a 0.15% fee is paid. 60% of all protocol revenue is distributed back to our holders." />
           </RowFixed>
           <Text fontSize="14px">
             {realizedLPFee ? `${realizedLPFee?.toSignificant(6)  } ${  trade.inputAmount.currency.symbol}` : '-'}

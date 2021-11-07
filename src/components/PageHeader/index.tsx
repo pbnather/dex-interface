@@ -49,7 +49,7 @@ const PageHeader = ({ title, description, children, noSettings }: PageHeaderProp
         <Details>
           <Heading mb="8px">{title}</Heading>
           {description && (
-            <Text color="textDisabled" fontSize="14px">
+            <Text color="textSubtle" fontSize="14px">
               {description}
             </Text>
           )}

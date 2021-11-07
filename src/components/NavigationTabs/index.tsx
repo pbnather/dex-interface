@@ -140,8 +140,8 @@ export function AddRemoveTabs({ adding }: { adding: boolean }) {
         <QuestionHelper
           text={
             adding
-              ? 'When you add liquidity, you are given pool tokens representing your position. These tokens automatically earn fees proportional to your share of the pool, and can be redeemed at any time.'
-              : 'Removing pool tokens converts your position back into underlying tokens at the current rate, proportional to your share of the pool. Accrued fees are included in the amounts you receive.'
+              ? 'When you add liquidity, you are given pool tokens representing your position.'
+              : 'Removing pool tokens converts your position back into underlying tokens at the current rate, proportional to your share of the pool.'
           }
         />
       </RowBetween>
