@@ -647,7 +647,7 @@
       "symbol": "FTM-USDC ",
       "address": "0x2b4c76d0dc16be1c31d4c1dc53bf9b45987fc75c",
       "chainId": 250,
-      "decimals": 6,
+      "decimals": 18,
 
       "logoURI1": "https://assets.coingecko.com/coins/images/4001/small/Fantom.png?1558015016",
       "logoURI2": "https://assets.coingecko.com/coins/images/6319/large/USD_Coin_icon.png"
@@ -659,7 +659,7 @@
       "symbol": "FTM-fUSDT ",
       "address": "0x5965e53aa80a0bcf1cd6dbdd72e6a9b2aa047410",
       "chainId": 250,
-      "decimals": 6,
+      "decimals": 18,
 
       "logoURI1": "https://assets.coingecko.com/coins/images/4001/small/Fantom.png?1558015016",
       "logoURI2": "https://assets.coingecko.com/coins/images/325/large/Tether-logo.png"
@@ -695,7 +695,7 @@
       "symbol": "FTM-wBTC ",
       "address": "0xfdb9ab8b9513ad9e419cf19530fee49d412c3ee3",
       "chainId": 250,
-      "decimals": 8,
+      "decimals": 18,
 
       "logoURI1": "https://assets.coingecko.com/coins/images/4001/small/Fantom.png?1558015016",
       "logoURI2": "https://assets.coingecko.com/coins/images/7598/large/wrapped_bitcoin_wbtc.png"
@@ -722,7 +722,7 @@
       "symbol": "FTM-USDC",
       "address": "0xe7e90f5a767406eff87fdad7eb07ef407922ec1d",
       "chainId": 250,
-      "decimals": 6,
+      "decimals": 18,
 
       "logoURI1": "https://assets.coingecko.com/coins/images/4001/small/Fantom.png?1558015016",
       "logoURI2": "https://assets.coingecko.com/coins/images/6319/large/USD_Coin_icon.png"
@@ -734,7 +734,7 @@
       "symbol": "FTM-fUSDT",
       "address": "0xd14dd3c56d9bc306322d4cea0e1c49e9ddf045d4",
       "chainId": 250,
-      "decimals": 6,
+      "decimals": 18,
 
       "logoURI1": "https://assets.coingecko.com/coins/images/4001/small/Fantom.png?1558015016",
       "logoURI2": "https://assets.coingecko.com/coins/images/325/large/Tether-logo.png"
@@ -770,7 +770,7 @@
       "symbol": "FTM-wBTC",
       "address": "0x279b2c897737a50405ed2091694f225d83f2d3ba",
       "chainId": 250,
-      "decimals": 8,
+      "decimals": 18,
 
       "logoURI1": "https://assets.coingecko.com/coins/images/4001/small/Fantom.png?1558015016",
       "logoURI2": "https://assets.coingecko.com/coins/images/7598/large/wrapped_bitcoin_wbtc.png"

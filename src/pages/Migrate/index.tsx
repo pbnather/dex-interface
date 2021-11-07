@@ -130,6 +130,7 @@ const Migrate = () => {
   const [approval, approveCallback] = useApproveCallback(tryParseAmount('9999999999', token), chainId && '0xf0ff07d19f310abab54724a8876eee71e338c82f')
   console.log('the approval is', approval)
   const [inputAmount, setInputAmount] = useState(0);
+  const [inputFloatAmount, setInputFloatAmount] = useState(0);
 
   const theme = useContext(ThemeContext)
 
@@ -257,11 +258,8 @@ const Migrate = () => {
   }
 
   const onUpdateAmount = e => {
-    setInputAmount(parseFloat(e.target.value) || 0);
-
-    if(selectedCurrencyBalance)
-      console.log('the amounts', inputAmount, parseFloat(selectedCurrencyBalance?.toSignificant(6)),
-        inputAmount < parseFloat(selectedCurrencyBalance?.toSignificant(6)));
+    setInputAmount(e.target.value || '');
+    setInputFloatAmount(parseFloat(e.target.value) || 0);
   }
 
 
@@ -289,7 +287,7 @@ const Migrate = () => {
     console.log('the zap contract is',zapContract);
     if(!token || !inputAmount || !library) return;
 
-    const typedValueParsed = parseUnits(inputAmount.toString(), token.decimals).toString()
+    const typedValueParsed = parseUnits(inputAmount, token.decimals).toString()
     // call zap contract function here with approved LP token
     // https://ftmscan.com/tx/0x05448d7b1d1b3d18bf8e48a4aa5246539580820abdc5c4bd468e9bc20e15aedf
 
@@ -349,7 +347,7 @@ const Migrate = () => {
               {!token ? 
               <div><Button disabled style={{width: '100%'}}>SELECT TOKEN</Button></div>
               : <div>
-                  {selectedCurrencyBalance && inputAmount > parseFloat(selectedCurrencyBalance?.toSignificant(6)) ?
+                  {selectedCurrencyBalance && inputFloatAmount > parseFloat(selectedCurrencyBalance?.toSignificant(6)) ?
                   <Button disabled style={{width: '100%'}}>Insuficcient liquidity</Button>
                   :
                   <RowBetween >
