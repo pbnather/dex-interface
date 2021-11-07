@@ -58,36 +58,23 @@ import AppBody from '../AppBody'
 import zapABI from './abis/zap.json';
 
 // zapper contract automatically breaks the liquditiy and creates it at different dex
-const DEXES = {
-  'spooky': {
-    name: 'spooky',
-    contractAddresses: {
-      factory: '0x152eE697f2E276fA89E96742e9bB9aB1F2E61bE3',
-      router: '0xF491e7B69E4244ad4002BC14e878a34207E38c29',
-      zap: ''
-    }
-  },
-  'spirit': {
-    name: 'Spiritswap',
-    contractAddresses: {
-      factory: '0xEF45d134b73241eDa7703fa787148D9C9F4950b0',
-      router: '0x16327E3FbDaCA3bcF7E38F5Af2599D2DDc33aE52',
-      zap: ''
-    }
-  }
-}
-const factoryAddress = '0xF491e7B69E4244ad4002BC14e878a34207E38c29';
-// export function getContract(address: string, ABI: any, library: Web3Provider, account?: string): Contract {
-//   if (!isAddress(address) || address === AddressZero) {
-//     throw Error(`Invalid 'address' parameter '${address}'.`)
+// const DEXES = {
+//   'spooky': {
+//     name: 'spooky',
+//     contractAddresses: {
+//       factory: '0x152eE697f2E276fA89E96742e9bB9aB1F2E61bE3',
+//       router: '0xF491e7B69E4244ad4002BC14e878a34207E38c29',
+//       zap: ''
+//     }
+//   },
+//   'spirit': {
+//     name: 'Spiritswap',
+//     contractAddresses: {
+//       factory: '0xEF45d134b73241eDa7703fa787148D9C9F4950b0',
+//       router: '0x16327E3FbDaCA3bcF7E38F5Af2599D2DDc33aE52',
+//       zap: ''
+//     }
 //   }
-
-//   return new Contract(address, ABI, getProviderOrSigner(library, account) as any)
-// }
-
-// // account is optional
-// export function getRouterContract(_: number, library: Web3Provider, account?: string): Contract {
-//   return getContract(ROUTER_ADDRESS, IUniswapV2Router02ABI, library, account)
 // }
 
 
@@ -98,10 +85,6 @@ const Migrate = () => {
   const { account, chainId, library } = useActiveWeb3React();
   const [modalOpen, setModalOpen] = useState(false);
 
-  // const [token, setToken] = useState<Token>();
-
-  const [factory, setFactory] = useState<Contract>();
-  const [router, setRouter] = useState<Contract>();
 
 
 
@@ -118,9 +101,9 @@ const Migrate = () => {
   const [accountError, setAccountError] = useState(false);
   const selectedCurrencyBalance = useCurrencyBalance(account ?? undefined, token ?? undefined)
 
-  useEffect(() => {
-    console.log('selected bal', selectedCurrencyBalance);
-  }, [selectedCurrencyBalance])
+  // useEffect(() => {
+  //   console.log('selected bal', selectedCurrencyBalance);
+  // }, [selectedCurrencyBalance])
 
 
   const loadedUrlParams = useDefaultsFromURLSearch()
@@ -143,22 +126,6 @@ const Migrate = () => {
     setAccountError(false);
   }, [account])
 
-
-  // useEffect(() => {
-  //   if(!chainId) return;
-
-  //   const _token = new Token(
-  //     chainId, 
-  //     '0x0789ff5ba37f72abc4d561d00648acadc897b32d', 
-  //     18, 
-  //     'MORPH', 
-  //     'morpheus-token'
-  //   );
-
-  //   console.log('the token is', _token);
-  //   setToken(_token);
-
-  // }, [chainId]);
 
   const [approval, approveCallback] = useApproveCallback(tryParseAmount('9999999999', token), chainId && '0xf0ff07d19f310abab54724a8876eee71e338c82f')
   console.log('the approval is', approval)
@@ -331,8 +298,6 @@ const Migrate = () => {
       console.log('no signer//error');
       return;
     }
-
-    console.log('the signer is', signer);
     const zapped = await signer.zapAcross(
       token.address, // token address
       typedValueParsed, // amount to transfer

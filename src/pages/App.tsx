@@ -2,6 +2,8 @@ import React, { Suspense, useEffect, useState } from 'react'
 import { HashRouter, Route, Switch } from 'react-router-dom'
 import styled from 'styled-components'
 import { Credentials, StringTranslations } from '@crowdin/crowdin-api-client'
+import { ConnectorNames, connectorLocalStorageKey } from 'trinityhelper'
+import useAuth from 'components/ConnectWalletButton/useAuth';
 import Popups from '../components/Popups'
 import Web3ReactManager from '../components/Web3ReactManager'
 import { RedirectDuplicateTokenIds, RedirectOldAddLiquidityPathStructure } from './AddLiquidity/redirects'
@@ -77,11 +79,16 @@ export default function App() {
 
   const stringTranslationsApi = new StringTranslations(credentials)
 
-  // const getStoredLang = (storedLangCode: string) => {
-  //   return allLanguages.filter((language) => {
-  //     return language.code === storedLangCode
-  //   })[0]
-  // }
+  const { login } = useAuth()
+
+  const connectorId = window.localStorage.getItem(connectorLocalStorageKey) as ConnectorNames
+
+  useEffect(() => {
+    if(connectorId === 'injected') {
+
+      login(connectorId);
+    }
+  }, [])
 
   useEffect(() => {
     // const storedLangCode = localStorage.getItem('pancakeSwapLanguage')

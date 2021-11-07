@@ -15,7 +15,7 @@ const Menu: React.FC = (props) => {
   const { selectedLanguage, setSelectedLanguage } = useContext(LanguageContext)
   const { isDark, toggleTheme } = useTheme()
   const priceData = useGetPriceData()
-  const cakePriceUsd = priceData ? Number(priceData.prices.Cake) : undefined
+  const cakePriceUsd = priceData ? Number(priceData.market_data.current_price.usd) : undefined
 
   return (
     <UikitMenu
