@@ -129,7 +129,7 @@ const Migrate = () => {
 
   const [approval, approveCallback] = useApproveCallback(tryParseAmount('9999999999', token), chainId && '0xf0ff07d19f310abab54724a8876eee71e338c82f')
   console.log('the approval is', approval)
-  const [inputAmount, setInputAmount] = useState(0);
+  const [inputAmount, setInputAmount] = useState('');
   const [inputFloatAmount, setInputFloatAmount] = useState(0);
 
   const theme = useContext(ThemeContext)
@@ -348,7 +348,7 @@ const Migrate = () => {
               <div><Button disabled style={{width: '100%'}}>SELECT TOKEN</Button></div>
               : <div>
 
-                  {selectedCurrencyBalance && inputAmount > parseFloat(selectedCurrencyBalance?.toSignificant(6)) ?
+                  {selectedCurrencyBalance && inputFloatAmount > parseFloat(selectedCurrencyBalance?.toSignificant(6)) ?
                   <Button disabled style={{width: '100%'}}>Insufficient balance</Button>
 
                   :
