@@ -12,6 +12,6 @@ export const BodyWrapper = styled(Card)`
 /**
  * The styled container element that wraps the content of most pages and the tabs.
  */
-export default function AppBody({ children }: { children: React.ReactNode }) {
-  return <BodyWrapper>{children}</BodyWrapper>
+export default function AppBody({ children, width }: { children: React.ReactNode, width?: number }) {
+  return <BodyWrapper style={{...width ? {maxWidth: width} : {}}}>{children}</BodyWrapper>
 }

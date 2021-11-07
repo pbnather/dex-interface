@@ -17,6 +17,9 @@ const Nav = ({ activeIndex = 0 }: { activeIndex?: number }) => (
       <ButtonMenuItem id="pool-nav-link" to="/pool" as={Link} style={{borderRadius: '30px'}}>
         <TranslatedText translationId={74}>Liquidity</TranslatedText>
       </ButtonMenuItem>
+      <ButtonMenuItem id="pool-nav-link" to="/migrate" as={Link} style={{borderRadius: '30px'}}>
+        <TranslatedText translationId={74}>Migrate</TranslatedText>
+      </ButtonMenuItem>
      
     </ButtonMenu>
   </StyledNav>

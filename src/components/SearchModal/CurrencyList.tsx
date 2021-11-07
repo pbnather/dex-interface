@@ -1,6 +1,7 @@
-import { Currency, CurrencyAmount, currencyEquals, ETHER, Token } from '@morpheusswap/sdk'
+import { Currency, CurrencyAmount, currencyEquals, ETHER, Token } from 'morph-sdk'
 import React, { CSSProperties, MutableRefObject, useCallback, useMemo } from 'react'
 import { FixedSizeList } from 'react-window'
+import defaultTokenList from 'constants/token/pancakeswap.json';
 import styled from 'styled-components'
 import { Text } from 'trinityhelper'
 import { useActiveWeb3React } from '../../hooks'
@@ -16,6 +17,10 @@ import { MouseoverTooltip } from '../Tooltip'
 import { FadedSpan, MenuItem } from './styleds'
 import Loader from '../Loader'
 import { isTokenOnList } from '../../utils'
+
+const _defaultTokenList = defaultTokenList.tokens;
+const tokenMapping = {};
+_defaultTokenList.forEach(t => {tokenMapping[t.symbol] = t});
 
 const { main: Main } = TYPE
 
@@ -114,7 +119,15 @@ function CurrencyRow({
       disabled={isSelected}
       selected={otherSelected}
     >
-      <CurrencyLogo currency={currency} size="24px" />
+      {
+        currency.symbol && tokenMapping && tokenMapping[currency.symbol] && tokenMapping[currency.symbol].lp ?
+        <div style={{width: 50}}>
+          <img src={tokenMapping[currency.symbol].logoURI1} alt=" " style={{height: 24}} />
+          <img src={tokenMapping[currency.symbol].logoURI2} alt=" " style={{position: 'relative', height: 22, left: -7, bottom: -5, zIndex: -1}} />
+        </div>
+        : <CurrencyLogo currency={currency} size="24px" />
+      }
+
       <Column>
         <Text title={currency.name}>{currency.symbol}</Text>
         <FadedSpan>

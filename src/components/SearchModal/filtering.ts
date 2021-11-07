@@ -1,4 +1,4 @@
-import { Token } from '@morpheusswap/sdk'
+import { Token } from 'morph-sdk'
 import defaultTokenJson from 'constants/token/pancakeswap.json'
 import { isAddress } from '../../utils'
 

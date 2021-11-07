@@ -8,6 +8,7 @@ interface PageHeaderProps {
   title: ReactNode
   description?: ReactNode
   children?: ReactNode
+  noSettings?: boolean
 }
 
 // TODO: use UI Kit
@@ -38,7 +39,7 @@ const Details = styled.div`
   flex: 1;
 `
 
-const PageHeader = ({ title, description, children }: PageHeaderProps) => {
+const PageHeader = ({ title, description, children, noSettings }: PageHeaderProps) => {
   const [onPresentSettings] = useModal(<SettingsModal />)
   const [onPresentRecentTransactions] = useModal(<RecentTransactionsModal />)
 
@@ -48,14 +49,19 @@ const PageHeader = ({ title, description, children }: PageHeaderProps) => {
         <Details>
           <Heading mb="8px">{title}</Heading>
           {description && (
-            <Text color="textSubtle" fontSize="14px">
+            <Text color="textDisabled" fontSize="14px">
               {description}
             </Text>
           )}
         </Details>
-        <IconButton variant="text" onClick={onPresentSettings} title="Settings">
-          <CogIcon />
-        </IconButton>
+
+        {
+          !noSettings ?
+            <IconButton variant="text" onClick={onPresentSettings} title="Settings">
+            <CogIcon />
+          </IconButton> : ''
+        }
+
         <IconButton variant="text" onClick={onPresentRecentTransactions} title="Recent transactions">
           <HistoryIcon />
         </IconButton>

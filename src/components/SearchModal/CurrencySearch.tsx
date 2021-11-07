@@ -1,4 +1,4 @@
-import { Currency, ETHER, Token } from '@morpheusswap/sdk'
+import { Currency, ETHER, Token } from 'morph-sdk'
 import React, { KeyboardEvent, RefObject, useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react'
 import { Text, CloseIcon } from 'trinityhelper'
 import { useSelector } from 'react-redux'
