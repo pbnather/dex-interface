@@ -283,7 +283,7 @@ const Migrate = () => {
   const onMigrate = async e => {
     console.log('on migrate');
     if(!library) return;
-    const zapContract = getContract('0xf0ff07d19f310abab54724a8876eee71e338c82f', zapABI, library);
+    const zapContract = getContract('0xD5b6BD4AC0F4a106588B5658Bf322bBF64add88e', zapABI, library);
     console.log('the zap contract is',zapContract);
     if(!token || !inputAmount || !library) return;
 
