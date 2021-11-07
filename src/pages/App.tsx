@@ -88,7 +88,7 @@ export default function App() {
 
       login(connectorId);
     }
-  }, [])
+  }, [connectorId, login])
 
   useEffect(() => {
     // const storedLangCode = localStorage.getItem('pancakeSwapLanguage')
