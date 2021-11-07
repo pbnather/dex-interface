@@ -334,7 +334,7 @@ const Migrate = () => {
 
   return (
     <>
-      <CardNav />
+      <CardNav activeIndex={2} />
       <AppBody width={600}>
         <Wrapper id="swap-page">
          
