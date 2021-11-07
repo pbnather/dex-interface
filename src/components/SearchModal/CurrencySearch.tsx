@@ -76,7 +76,6 @@ export function CurrencySearch({
   
   const filteredTokens: Token[] = useMemo(() => {
     if (isAddressSearch) return searchToken ? [searchToken] : []
-      console.log('filtering!')
     return filterTokens(Object.values(allTokens), searchQuery, !!isLPTokenSearch, dex)
   }, [isAddressSearch, searchToken, allTokens, searchQuery, isLPTokenSearch, dex])
 
@@ -88,7 +87,6 @@ export function CurrencySearch({
       .split(/\s+/)
       .filter((s) => s.length > 0)
     if (symbolMatch.length > 1) return sorted
-      console.log('sorted', sorted)
 
     return [
       ...(searchToken ? [searchToken] : []),
@@ -147,8 +145,6 @@ export function CurrencySearch({
 
   const selectedListInfo = useSelectedListInfo()
 
-  console.log('CURRENCY LIST VARIABLES', filteredSortedTokens, selectedCurrency, showETH);
-
   return (
     <Column style={{ width: '100%', flex: '1 1' }}>
       <PaddedColumn gap="14px">
@@ -175,7 +171,7 @@ export function CurrencySearch({
           onChange={handleInput}
           onKeyDown={handleEnter}
         />
-        {showCommonBases && (
+        {true && (
           <CommonBases chainId={chainId} onSelect={handleCurrencySelect} selectedCurrency={selectedCurrency} />
         )}
         <RowBetween>
