@@ -1,6 +1,6 @@
 import React from 'react'
 import { Text } from 'trinityhelper'
-import { Currency, currencyEquals, ETHER, Token } from 'morph-sdk'
+import { Currency, currencyEquals, ETHER, Token } from '@morpheusswap/sdk'
 import styled from 'styled-components'
 
 import { SUGGESTED_BASES } from '../../constants'

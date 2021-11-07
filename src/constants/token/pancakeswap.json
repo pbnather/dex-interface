@@ -626,6 +626,154 @@
       "decimals": 18,
       "logoURI": "https://assets.spookyswap.finance/tokens/SUMMIT.png",
       "bridgeId": ""
+    },
+
+    {
+      "lp": true,
+      "dex": "spooky",
+      "name": "FTM-MIM Pair Spooky",
+      "symbol": "FTM-MIM ",
+      "address": "0x6f86e65b255c9111109d2d2325ca2dfc82456efc",
+      "chainId": 250,
+      "decimals": 18,
+
+      "logoURI1": "https://assets.coingecko.com/coins/images/4001/small/Fantom.png?1558015016",
+      "logoURI2": "https://assets.coingecko.com/coins/images/16786/large/mimlogopng.png"
+    },
+    {
+      "lp": true,
+      "dex": "spooky",
+      "name": "FTM-USDC Pair Spooky",
+      "symbol": "FTM-USDC ",
+      "address": "0x2b4c76d0dc16be1c31d4c1dc53bf9b45987fc75c",
+      "chainId": 250,
+      "decimals": 18,
+
+      "logoURI1": "https://assets.coingecko.com/coins/images/4001/small/Fantom.png?1558015016",
+      "logoURI2": "https://assets.coingecko.com/coins/images/6319/large/USD_Coin_icon.png"
+    },
+    {
+      "lp": true,
+      "dex": "spooky",
+      "name": "FTM-fUSDT Pair Spooky",
+      "symbol": "FTM-fUSDT ",
+      "address": "0x5965e53aa80a0bcf1cd6dbdd72e6a9b2aa047410",
+      "chainId": 250,
+      "decimals": 18,
+
+      "logoURI1": "https://assets.coingecko.com/coins/images/4001/small/Fantom.png?1558015016",
+      "logoURI2": "https://assets.coingecko.com/coins/images/325/large/Tether-logo.png"
+    },
+    {
+      "lp": true,
+      "dex": "spooky",
+      "name": "FTM-DAI Pair Spooky",
+      "symbol": "FTM-DAI ",
+      "address": "0x623EE4a7F290d11C11315994dB70FB148b13021d",
+      "chainId": 250,
+      "decimals": 18,
+
+      "logoURI1": "https://assets.coingecko.com/coins/images/4001/small/Fantom.png?1558015016",
+      "logoURI2": "https://assets.coingecko.com/coins/images/9956/large/dai-multi-collateral-mcd.png"
+    },
+    {
+      "lp": true,
+      "dex": "spooky",
+      "name": "FTM-wETH LP Token Spooky",
+      "symbol": "FTM-wETH ",
+      "address": "0xf0702249f4d3a25cd3ded7859a165693685ab577",
+      "chainId": 250,
+      "decimals": 18,
+
+      "logoURI1": "https://assets.coingecko.com/coins/images/4001/small/Fantom.png?1558015016",
+      "logoURI2": "hhttps://assets.coingecko.com/coins/images/279/large/ethereum.png"
+    },
+    {
+      "lp": true,
+      "dex": "spooky",
+      "name": "FTM-wBTC LP Token Spooky",
+      "symbol": "FTM-wBTC ",
+      "address": "0xfdb9ab8b9513ad9e419cf19530fee49d412c3ee3",
+      "chainId": 250,
+      "decimals": 18,
+
+      "logoURI1": "https://assets.coingecko.com/coins/images/4001/small/Fantom.png?1558015016",
+      "logoURI2": "https://assets.coingecko.com/coins/images/7598/large/wrapped_bitcoin_wbtc.png"
+    },
+
+
+
+    {
+      "lp": true,
+      "dex": "spirit",
+      "name": "FTM-MIM Pair",
+      "symbol": "FTM-MIM",
+      "address": "0xb32b31dfafbd53e310390f641c7119b5b9ea0488",
+      "chainId": 250,
+      "decimals": 18,
+
+      "logoURI1": "https://assets.coingecko.com/coins/images/4001/small/Fantom.png?1558015016",
+      "logoURI2": "https://assets.coingecko.com/coins/images/16786/large/mimlogopng.png"
+    },
+    {
+      "lp": true,
+      "dex": "spirit",
+      "name": "FTM-USDC Pair",
+      "symbol": "FTM-USDC",
+      "address": "0xe7e90f5a767406eff87fdad7eb07ef407922ec1d",
+      "chainId": 250,
+      "decimals": 18,
+
+      "logoURI1": "https://assets.coingecko.com/coins/images/4001/small/Fantom.png?1558015016",
+      "logoURI2": "https://assets.coingecko.com/coins/images/6319/large/USD_Coin_icon.png"
+    },
+    {
+      "lp": true,
+      "dex": "spirit",
+      "name": "FTM-fUSDT Pair",
+      "symbol": "FTM-fUSDT",
+      "address": "0xd14dd3c56d9bc306322d4cea0e1c49e9ddf045d4",
+      "chainId": 250,
+      "decimals": 18,
+
+      "logoURI1": "https://assets.coingecko.com/coins/images/4001/small/Fantom.png?1558015016",
+      "logoURI2": "https://assets.coingecko.com/coins/images/325/large/Tether-logo.png"
+    },
+    {
+      "lp": true,
+      "dex": "spirit",
+      "name": "FTM-DAI Pair",
+      "symbol": "FTM-DAI",
+      "address": "0xdbc490b47508d31c9ec44afb6e132ad01c61a02c",
+      "chainId": 250,
+      "decimals": 18,
+
+      "logoURI1": "https://assets.coingecko.com/coins/images/4001/small/Fantom.png?1558015016",
+      "logoURI2": "https://assets.coingecko.com/coins/images/9956/large/dai-multi-collateral-mcd.png"
+    },
+    {
+      "lp": true,
+      "dex": "spirit",
+      "name": "FTM-wETH LP Token",
+      "symbol": "FTM-wETH",
+      "address": "0x613bf4e46b4817015c01c6bb31c7ae9edaadc26e",
+      "chainId": 250,
+      "decimals": 18,
+
+      "logoURI1": "https://assets.coingecko.com/coins/images/4001/small/Fantom.png?1558015016",
+      "logoURI2": "hhttps://assets.coingecko.com/coins/images/279/large/ethereum.png"
+    },
+    {
+      "lp": true,
+      "dex": "spirit",
+      "name": "FTM-wBTC LP Token",
+      "symbol": "FTM-wBTC",
+      "address": "0x279b2c897737a50405ed2091694f225d83f2d3ba",
+      "chainId": 250,
+      "decimals": 18,
+
+      "logoURI1": "https://assets.coingecko.com/coins/images/4001/small/Fantom.png?1558015016",
+      "logoURI2": "https://assets.coingecko.com/coins/images/7598/large/wrapped_bitcoin_wbtc.png"
     }
   ]
 }

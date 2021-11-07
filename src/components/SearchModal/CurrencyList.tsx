@@ -1,4 +1,4 @@
-import { Currency, CurrencyAmount, currencyEquals, ETHER, Token } from 'morph-sdk'
+import { Currency, CurrencyAmount, currencyEquals, ETHER, Token } from '@morpheusswap/sdk'
 import React, { CSSProperties, MutableRefObject, useCallback, useMemo } from 'react'
 import { FixedSizeList } from 'react-window'
 import styled from 'styled-components'
@@ -155,6 +155,7 @@ function CurrencyRow({
 }
 
 export default function CurrencyList({
+  isLPTokenSearch,
   height,
   currencies,
   selectedCurrency,
@@ -163,6 +164,7 @@ export default function CurrencyList({
   fixedListRef,
   showETH,
 }: {
+  isLPTokenSearch?: boolean
   height: number
   currencies: Currency[]
   selectedCurrency?: Currency | null

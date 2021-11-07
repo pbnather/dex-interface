@@ -1,4 +1,4 @@
-import { Currency, ETHER, Token } from 'morph-sdk'
+import { Currency, ETHER, Token } from '@morpheusswap/sdk'
 import React, { KeyboardEvent, RefObject, useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react'
 import { Text, CloseIcon } from 'trinityhelper'
 import { useSelector } from 'react-redux'
@@ -35,6 +35,8 @@ interface CurrencySearchProps {
   onCurrencySelect: (currency: Currency) => void
   otherSelectedCurrency?: Currency | null
   showCommonBases?: boolean
+  isLPTokenSearch?: boolean
+  dex?: string,
   onChangeList: () => void
 }
 
@@ -45,6 +47,8 @@ export function CurrencySearch({
   showCommonBases,
   onDismiss,
   isOpen,
+  isLPTokenSearch,
+  dex,
   onChangeList,
 }: CurrencySearchProps) {
   const { t } = useTranslation()
@@ -72,17 +76,21 @@ export function CurrencySearch({
   
   const filteredTokens: Token[] = useMemo(() => {
     if (isAddressSearch) return searchToken ? [searchToken] : []
-    return filterTokens(Object.values(allTokens), searchQuery)
-  }, [isAddressSearch, searchToken, allTokens, searchQuery])
+      console.log('filtering!')
+    return filterTokens(Object.values(allTokens), searchQuery, !!isLPTokenSearch, dex)
+  }, [isAddressSearch, searchToken, allTokens, searchQuery, isLPTokenSearch, dex])
 
   const filteredSortedTokens: Token[] = useMemo(() => {
+    console.log('sorted tokens 1')
     if (searchToken) return [searchToken]
+      console.log('sorted tokens 2')
     const sorted = filteredTokens.sort(tokenComparator)
     const symbolMatch = searchQuery
       .toLowerCase()
       .split(/\s+/)
       .filter((s) => s.length > 0)
     if (symbolMatch.length > 1) return sorted
+      console.log('sorted tokens 3')
 
     return [
       ...(searchToken ? [searchToken] : []),
@@ -146,7 +154,9 @@ export function CurrencySearch({
       <PaddedColumn gap="14px">
         <RowBetween>
           <Text>
-            <TranslatedText translationId={82}>Select a token</TranslatedText>
+            {isLPTokenSearch ? 
+              <TranslatedText translationId={82}>Select a LP token</TranslatedText>
+              : <TranslatedText translationId={82}>Select a token</TranslatedText>}
             <QuestionHelper
               text={TranslateString(
                 130,
@@ -170,7 +180,9 @@ export function CurrencySearch({
         )}
         <RowBetween>
           <Text fontSize="14px">
-            <TranslatedText translationId={126}>Token name</TranslatedText>
+            {isLPTokenSearch ? 
+              <TranslatedText translationId={82}>LP token name</TranslatedText>
+              : <TranslatedText translationId={82}>Token name</TranslatedText>}
           </Text>
           <SortButton ascending={invertSearchOrder} toggleSortOrder={() => setInvertSearchOrder((iso) => !iso)} />
         </RowBetween>
@@ -189,6 +201,7 @@ export function CurrencySearch({
               otherCurrency={otherSelectedCurrency}
               selectedCurrency={selectedCurrency}
               fixedListRef={fixedList}
+              isLPTokenSearch={isLPTokenSearch}
             />
           )}
         </AutoSizer>
@@ -201,13 +214,13 @@ export function CurrencySearch({
             <RowBetween>
               {selectedListInfo.current ? (
                 <Row>
-                  {selectedListInfo.current.logoURI ? (
+                  {selectedListInfo.current && selectedListInfo.current.logoURI ? 
                     <ListLogo
                       style={{ marginRight: 12 }}
                       logoURI={selectedListInfo.current.logoURI}
                       alt={`${selectedListInfo.current.name} list logo`}
-                    />
-                  ) : null}
+                    /> : null
+                   }
                   <Main id="currency-search-selected-list-name">{selectedListInfo.current.name}</Main>
                 </Row>
               ) : null}

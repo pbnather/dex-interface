@@ -1,4 +1,4 @@
-import { Currency } from 'morph-sdk'
+import { Currency } from '@morpheusswap/sdk'
 import React, { useCallback, useEffect, useState } from 'react'
 import useLast from '../../hooks/useLast'
 import { useSelectedListUrl } from '../../state/lists/hooks'
@@ -12,6 +12,8 @@ interface CurrencySearchModalProps {
   selectedCurrency?: Currency | null
   onCurrencySelect: (currency: Currency) => void
   otherSelectedCurrency?: Currency | null
+  isLPTokenSearch?: boolean
+  dex?: string
   // eslint-disable-next-line react/no-unused-prop-types
   showCommonBases?: boolean
 }
@@ -21,12 +23,16 @@ export default function CurrencySearchModal({
   onDismiss,
   onCurrencySelect,
   selectedCurrency,
+  isLPTokenSearch,
+  dex,
   otherSelectedCurrency,
 }: CurrencySearchModalProps) {
   const [listView, setListView] = useState<boolean>(false)
   const lastOpen = useLast(isOpen)
 
   useEffect(() => {
+    console.log('MODAL IS ', isOpen);
+
     if (isOpen && !lastOpen) {
       setListView(false)
     }
@@ -64,6 +70,8 @@ export default function CurrencySearchModal({
           onChangeList={handleClickChangeList}
           selectedCurrency={selectedCurrency}
           otherSelectedCurrency={otherSelectedCurrency}
+          isLPTokenSearch={isLPTokenSearch}
+          dex={dex}
           showCommonBases={false}
         />
       ) : (
@@ -74,6 +82,8 @@ export default function CurrencySearchModal({
           onChangeList={handleClickChangeList}
           selectedCurrency={selectedCurrency}
           otherSelectedCurrency={otherSelectedCurrency}
+          isLPTokenSearch={isLPTokenSearch}
+          dex={dex}
           showCommonBases={false}
         />
       )}

@@ -1921,19 +1921,6 @@
   dependencies:
     "@json-rpc-tools/types" "^1.5.7"
 
-"@morpheusswap/sdk@^1.0.4":
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/@morpheusswap/sdk/-/sdk-1.0.4.tgz#1ddd95e9e718b8b039f0c6aca929a8610eddce49"
-  integrity sha512-guySWRBq853SGbEBgJghYWOWvcEmtewEaH+0zkZJNwRYnL7Q/FcT+DRSWdSzQSgJajWP/KNFCAQwiNMkbAcXhg==
-  dependencies:
-    "@uniswap/v2-core" "^1.0.0"
-    big.js "^5.2.2"
-    decimal.js-light "^2.5.0"
-    jsbi "^3.1.1"
-    tiny-invariant "^1.1.0"
-    tiny-warning "^1.0.3"
-    toformat "^2.0.0"
-
 "@multiformats/base-x@^4.0.1":
   version "4.0.1"
   resolved "https://registry.yarnpkg.com/@multiformats/base-x/-/base-x-4.0.1.tgz"
@@ -1981,17 +1968,6 @@
     eslint-plugin-jsx-a11y "^6.4.1"
     eslint-plugin-react "^7.21.5"
     eslint-plugin-react-hooks "^4.0.0"
-
-"@pancakeswap-libs/uikit@^0.10.5":
-  version "0.10.5"
-  resolved "https://registry.yarnpkg.com/@pancakeswap-libs/uikit/-/uikit-0.10.5.tgz"
-  integrity sha512-T1uikr5ImU3wMMdf5PbYLJTCacdCmzJSkOu+SUmG06OlM6gLvTWsAZeAai9CX4llyEvv1BzQQTDVnwVbPFFoNw==
-  dependencies:
-    "@types/lodash" "^4.14.162"
-    "@types/styled-system" "^5.1.10"
-    lodash "^4.17.20"
-    react-transition-group "^4.4.1"
-    styled-system "^5.1.5"
 
 "@pedrouid/iso-crypto@^1.0.0":
   version "1.0.0"
@@ -10796,6 +10772,19 @@ moment@^2.27.0:
   version "2.29.1"
   resolved "https://registry.yarnpkg.com/moment/-/moment-2.29.1.tgz"
   integrity sha512-kHmoybcPV8Sqy59DwNDY3Jefr64lK/by/da0ViFcuA4DH0vQg5Q6Ze5VimxkfQNSC+Mls/Kx53s7TjP1RhFEDQ==
+
+morph-sdk@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/morph-sdk/-/morph-sdk-1.0.1.tgz#f097fb77e30d146362dc7242680ba72a81fa5d64"
+  integrity sha512-IpD/tuES6gLGq0xINyfs50kK+ZQUxUVnsOJp/r+wIpNjX4AkW0n2h0Qysnlxo+DbjmtBTi+fwnWGbmezxdr1SQ==
+  dependencies:
+    "@uniswap/v2-core" "^1.0.0"
+    big.js "^5.2.2"
+    decimal.js-light "^2.5.0"
+    jsbi "^3.1.1"
+    tiny-invariant "^1.1.0"
+    tiny-warning "^1.0.3"
+    toformat "^2.0.0"
 
 move-concurrently@^1.0.1:
   version "1.0.1"
