@@ -70,7 +70,7 @@ const RecentTransactionsModal = ({ onDismiss = defaultOnDismiss }: RecentTransac
           return (
             <>
               <Flex key={hash} alignItems="center" justifyContent="space-between" mb="4px">
-                <LinkExternal href={getEtherscanLink(chainId, hash, 'transaction')} color={color}>
+                <LinkExternal href={getEtherscanLink(chainId, hash, 'transaction')} color="textSubtle">
                   {summary ?? hash}
                 </LinkExternal>
                 {icon}
