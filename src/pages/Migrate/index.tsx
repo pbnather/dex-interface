@@ -312,16 +312,16 @@ const Migrate = () => {
       <AppBody width={600}>
         <Wrapper id="swap-page">
          
-          <PageHeader title="Migrate" description="Migrate your LP to Morpheus" noSettings />
+          <PageHeader title="Migrate" description="Migrate your LP to Morpheus Swap" noSettings />
 
           <CardBody>
             <RowBetween my="1rem">
               <div style={{position: 'relative'}}>
               <div style={{borderWidth: 2, padding: 10, borderRadius: 15, display: 'inline', borderStyle: 'solid', borderColor: '#5eda6a'}}>
                 <select onChange={handleDexSelect} style={{outline: 'none', border: 'none', background: 'none', color: '#5eda6a', fontFamily: 'inherit', fontWeight: 600, fontSize: 18}}>
-                  <option value="" disabled selected>Dex to migrate LPs from</option>
-                  <option value="spooky">Spookyswap</option>
-                  <option value="spirit">Spiritswap</option>
+                  <option value="" disabled selected>DEX to migrate LPs from</option>
+                  <option value="spooky">SpookySwap</option>
+                  <option value="spirit">SpiritSwap</option>
                 </select>
               </div>
               <br /><br />
@@ -330,7 +330,7 @@ const Migrate = () => {
               </div>
 
               <div style={{backgroundColor: '#3f403f', borderRadius: 10, padding: 20, width: 250, textAlign: 'center'}}>
-                {token && selectedCurrencyBalance ? <Text>Balance: ${selectedCurrencyBalance?.toSignificant(6)}</Text> : <Text>-</Text>}
+                {token && selectedCurrencyBalance ? <Text>Balance: {selectedCurrencyBalance?.toSignificant(6)}</Text> : <Text>-</Text>}
                 <br />
                 {token && token.name ? 
                   <Text style={{cursor: 'pointer'}} onClick={openTokenSelect}>
@@ -347,8 +347,10 @@ const Migrate = () => {
               {!token ? 
               <div><Button disabled style={{width: '100%'}}>SELECT TOKEN</Button></div>
               : <div>
-                  {selectedCurrencyBalance && inputFloatAmount > parseFloat(selectedCurrencyBalance?.toSignificant(6)) ?
-                  <Button disabled style={{width: '100%'}}>Insuficcient liquidity</Button>
+
+                  {selectedCurrencyBalance && inputAmount > parseFloat(selectedCurrencyBalance?.toSignificant(6)) ?
+                  <Button disabled style={{width: '100%'}}>Insufficient balance</Button>
+
                   :
                   <RowBetween >
                     <Button disabled={approval === ApprovalState.APPROVED} style={{width: '49%'}} onClick={onApprove}>Approve</Button> 
