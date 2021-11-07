@@ -115,6 +115,7 @@ const Migrate = () => {
   const [balance, setBalance] = useState(null)
   const [dex, setDex] = useState(null);
   const [dexError, setDexError] = useState(false);
+  const [accountError, setAccountError] = useState(false);
   const selectedCurrencyBalance = useCurrencyBalance(account ?? undefined, token ?? undefined)
 
   useEffect(() => {
@@ -136,6 +137,11 @@ const Migrate = () => {
     () => [loadedInputCurrency, loadedOutputCurrency]?.filter((c): c is Token => c instanceof Token) ?? [],
     [loadedInputCurrency, loadedOutputCurrency]
   )
+
+  useEffect(() => {
+    if(!account) return;
+    setAccountError(false);
+  }, [account])
 
 
   // useEffect(() => {
@@ -263,9 +269,14 @@ const Migrate = () => {
   }
 
   const openTokenSelect = e => {
-    if(!dex) {
+    if(!account) {
+      console.log('account error!')
+      setAccountError(true);
+    } else if(!dex) {
+      setAccountError(false);
       setDexError(true);
     } else {
+      setAccountError(false);
       setDexError(false);
       setModalOpen(true);
 
@@ -352,6 +363,7 @@ const Migrate = () => {
               </div>
               <br /><br />
               {dexError ? <Text style={{position: 'absolute', left: 50, bottom: -25, color: 'rgb(175, 52, 52)', fontWeight: 200}}>Select a DEX first</Text> : ''}
+              {accountError ? <Text style={{position: 'absolute', left: 30, bottom: -25, color: 'rgb(175, 52, 52)', fontWeight: 200}}>Connect your wallet first</Text> : ''}
               </div>
 
               <div style={{backgroundColor: '#3f403f', borderRadius: 10, padding: 20, width: 250, textAlign: 'center'}}>
