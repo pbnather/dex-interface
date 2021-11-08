@@ -26,7 +26,6 @@ export function useETHBalances(
     [uncheckedAddresses]
   )
 
-   console.log('the addresses are', addresses)
   const results = useSingleContractMultipleData(
     multicallContract,
     'getEthBalance',
@@ -61,7 +60,6 @@ export function useTokenBalancesWithLoadingIndicator(
   
   const balances = useMultipleContractSingleData(validatedTokenAddresses, ERC20_INTERFACE, 'balanceOf', [address])
 
-console.log('the balances are', balances)
   const anyLoading: boolean = useMemo(() => balances.some(callState => callState.loading), [balances])
 
   return [

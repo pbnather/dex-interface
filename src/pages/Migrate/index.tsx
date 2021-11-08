@@ -233,6 +233,9 @@ const Migrate = () => {
   const handleDexSelect = (e) => {
     setDex(e.target.value);
     setDexError(false);
+    setToken(undefined);
+    setInputAmount('');
+    setInputFloatAmount(0);
   }
 
   const onCurrencySelect = _token => {
@@ -261,14 +264,12 @@ const Migrate = () => {
   }
 
   const onUpdateAmount = e => {
-    console.log('pdating amount')
     setInputAmount(e.target.value || '');
     setInputFloatAmount(parseFloat(e.target.value) || 0);
   }
 
 
   const onMax = () => {
-    console.log('the input amount is', maxAmountInput)
     if(maxAmountInput) {
       setInputAmount(maxAmountInput.toSignificant(6).toString() || '');
       setInputFloatAmount(parseFloat(maxAmountInput.toSignificant(6).toString()) || 0);
@@ -277,8 +278,6 @@ const Migrate = () => {
 
 
   const onApprove = async e => {
-    console.log('approve')
-    // show pending toast UI
     approveCallback();
     // let approvalState = await useApproveCallback(99999000000000000000000, '0x0789ff5ba37f72abc4d561d00648acadc897b32d');
     // console.log(approvalState);
@@ -294,14 +293,12 @@ const Migrate = () => {
 
       
   const onMigrate = async e => {
-    console.log('on migrate');
     if(!library) return;
     const zapContract = getContract('0xDD9Ac0d6B5DBD3b009acc36ba40B4db657881e11', zapABI, library);
-    console.log('the zap contract is',zapContract, token, inputAmount, library);
     if(!token || !inputAmount || !library) return;
-    console.log('wer are here')
 
     const typedValueParsed = parseUnits(inputAmount, token.decimals).toString()
+    console.log('THE TYPEF VaLUE', typedValueParsed)
     // call zap contract function here with approved LP token
     // https://ftmscan.com/tx/0x05448d7b1d1b3d18bf8e48a4aa5246539580820abdc5c4bd468e9bc20e15aedf
 
@@ -342,19 +339,19 @@ const Migrate = () => {
               {accountError ? <Text style={{position: 'absolute', left: 30, bottom: -25, color: 'rgb(175, 52, 52)', fontWeight: 200}}>Connect your wallet first</Text> : ''}
               </div>
 
-              <div style={{backgroundColor: '#3f403f', borderRadius: 10, padding: 20, width: 250, textAlign: 'center'}}>
+              <div style={{backgroundColor: '#3f403f', borderRadius: 10, padding: 20, width: 280, textAlign: 'center'}}>
                 {token && selectedCurrencyBalance ? <Text>Balance: {selectedCurrencyBalance?.toSignificant(6)}</Text> : <Text>-</Text>}
                 <br />
                 {token && token.name ? 
                   <Text style={{cursor: 'pointer'}} onClick={openTokenSelect}>
                   {token.name}
                 </Text>
-                : <Text style={{cursor: 'pointer'}} onClick={openTokenSelect}>Choose an LP token</Text>}
+                : <Button style={{cursor: 'pointer', fontSize: 14}} onClick={openTokenSelect}>Choose an LP token</Button>}
                 <br /><br />
                 <div style={{display: 'flex', justifyContent: 'space-between', boxSizing: 'border-box', height: 54, alignItems: 'center', padding: '10px 20px', borderRadius: 10, backgroundColor: '#242524', fontSize: 18, width: '100%'}}>
                 <input placeholder="0" value={inputAmount} type="number" onChange={onUpdateAmount} style={{color: '#fff', border: 'none', background: 'none', outline: 'none'}} />
                  {account && token && (
-                    <Button onClick={onMax} scale="sm" variant="text" style={{position: 'relative', left: -30}}>
+                    <Button onClick={onMax} scale="sm" variant="text" style={{position: 'relative', left: -5}}>
                       MAX
                     </Button>
                   )}
