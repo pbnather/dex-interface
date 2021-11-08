@@ -39,6 +39,7 @@ import { TYPE } from 'components/Shared'
 // import { computeTradePriceBreakdown, warningSeverity } from 'utils/prices'
 // import Loader from 'components/Loader'
 // import { TranslateString } from 'utils/translateTextHelpers'
+import { maxAmountSpend } from 'utils/maxAmountSpend'
 import PageHeader from 'components/PageHeader'
 // import { Contract } from '@ethersproject/contracts'
 import { parseUnits } from '@ethersproject/units'
@@ -100,6 +101,7 @@ const Migrate = () => {
   const [dexError, setDexError] = useState(false);
   const [accountError, setAccountError] = useState(false);
   const selectedCurrencyBalance = useCurrencyBalance(account ?? undefined, token ?? undefined)
+  const maxAmountInput = maxAmountSpend(selectedCurrencyBalance);
 
   // useEffect(() => {
   //   console.log('selected bal', selectedCurrencyBalance);
@@ -107,6 +109,7 @@ const Migrate = () => {
 
 
   const loadedUrlParams = useDefaultsFromURLSearch()
+
 
   // token warning stuff
   const [loadedInputCurrency, loadedOutputCurrency] = [
@@ -263,6 +266,15 @@ const Migrate = () => {
   }
 
 
+  const onMax = () => {
+    console.log('the input amount is', maxAmountInput)
+    if(maxAmountInput) {
+      setInputAmount(maxAmountInput.toExact().toString() || '');
+      setInputFloatAmount(parseFloat(maxAmountInput.toExact().toString()) || 0);
+    }
+  }
+
+
   const onApprove = async e => {
     console.log('approve')
     // show pending toast UI
@@ -337,7 +349,14 @@ const Migrate = () => {
                 </Text>
                 : <Text style={{cursor: 'pointer'}} onClick={openTokenSelect}>Choose an LP token</Text>}
                 <br /><br />
-                <input placeholder="0" type="number" onKeyUp={onUpdateAmount} style={{color: '#fff', border: 'none', padding: '10px 20px', borderRadius: 10, backgroundColor: '#242524', fontSize: 18, width: '100%'}} />
+                <div style={{display: 'flex', justifyContent: 'space-between', boxSizing: 'border-box', height: 54, alignItems: 'center', padding: '10px 20px', borderRadius: 10, backgroundColor: '#242524', fontSize: 18, width: '100%'}}>
+                <input placeholder="0" value={inputAmount} type="number" onKeyUp={onUpdateAmount} style={{color: '#fff', border: 'none', background: 'none', outline: 'none'}} />
+                 {account && token && (
+                    <Button onClick={onMax} scale="sm" variant="text" style={{position: 'relative', left: -30}}>
+                      MAX
+                    </Button>
+                  )}
+                </div>
               </div>
 
             </RowBetween>
