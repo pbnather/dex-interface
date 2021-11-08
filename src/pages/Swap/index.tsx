@@ -261,7 +261,7 @@ const Swap = () => {
   const handleInputSelect = useCallback(
     (inputCurrency) => {
 
-      console.log('the select input!', inputCurrency)
+      // console.log('the select input!', inputCurrency)
       
       setApprovalSubmitted(false) // reset 2 step UI for approvals
       onCurrencySelection(Field.INPUT, inputCurrency)
