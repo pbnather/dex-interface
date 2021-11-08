@@ -261,6 +261,7 @@ const Migrate = () => {
   }
 
   const onUpdateAmount = e => {
+    console.log('pdating amount')
     setInputAmount(e.target.value || '');
     setInputFloatAmount(parseFloat(e.target.value) || 0);
   }
@@ -350,7 +351,7 @@ const Migrate = () => {
                 : <Text style={{cursor: 'pointer'}} onClick={openTokenSelect}>Choose an LP token</Text>}
                 <br /><br />
                 <div style={{display: 'flex', justifyContent: 'space-between', boxSizing: 'border-box', height: 54, alignItems: 'center', padding: '10px 20px', borderRadius: 10, backgroundColor: '#242524', fontSize: 18, width: '100%'}}>
-                <input placeholder="0" value={inputAmount} type="number" onKeyUp={onUpdateAmount} style={{color: '#fff', border: 'none', background: 'none', outline: 'none'}} />
+                <input placeholder="0" value={inputAmount} type="number" onChange={onUpdateAmount} style={{color: '#fff', border: 'none', background: 'none', outline: 'none'}} />
                  {account && token && (
                     <Button onClick={onMax} scale="sm" variant="text" style={{position: 'relative', left: -30}}>
                       MAX
@@ -366,7 +367,7 @@ const Migrate = () => {
               <div><Button disabled style={{width: '100%'}}>SELECT TOKEN</Button></div>
               : <div>
 
-                  {selectedCurrencyBalance && inputFloatAmount > parseFloat(selectedCurrencyBalance?.toSignificant(6)) ?
+                  {(selectedCurrencyBalance && inputFloatAmount > parseFloat(selectedCurrencyBalance?.toSignificant(6)) || (selectedCurrencyBalance && selectedCurrencyBalance?.toSignificant(6) === '0')) ?
                   <Button disabled style={{width: '100%'}}>Insufficient balance</Button>
 
                   :
