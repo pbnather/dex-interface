@@ -1,5 +1,5 @@
 import { Currency, CurrencyAmount, ETHER, JSBI, Token, TokenAmount } from 'morph-sdk'
-import { useMemo, useEffect } from 'react'
+import { useMemo } from 'react'
 import ERC20_INTERFACE from '../../constants/abis/erc20'
 import { useAllTokens } from '../../hooks/Tokens'
 import { useActiveWeb3React } from '../../hooks'
@@ -26,7 +26,7 @@ export function useETHBalances(
     [uncheckedAddresses]
   )
 
-   console.log('the addresses are', addresses)
+  //  console.log('the addresses are', addresses)
   const results = useSingleContractMultipleData(
     multicallContract,
     'getEthBalance',
@@ -61,7 +61,7 @@ export function useTokenBalancesWithLoadingIndicator(
   
   const balances = useMultipleContractSingleData(validatedTokenAddresses, ERC20_INTERFACE, 'balanceOf', [address])
 
-console.log('the balances are', balances)
+// console.log('the balances are', balances)
   const anyLoading: boolean = useMemo(() => balances.some(callState => callState.loading), [balances])
 
   return [

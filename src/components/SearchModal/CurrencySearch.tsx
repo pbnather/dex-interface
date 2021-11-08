@@ -64,10 +64,10 @@ export function CurrencySearch({
   const isAddressSearch = isAddress(searchQuery)
   const searchToken = useToken(searchQuery)
 
-  const showETH: boolean = useMemo(() => {
-    const s = searchQuery.toLowerCase().trim()
-    return s === '' || s === 'e' || s === 'et' || s === 'eth'
-  }, [searchQuery])
+  // const showETH: boolean = useMemo(() => {
+  //   const s = searchQuery.toLowerCase().trim()
+  //   return s === '' || s === 'e' || s === 'et' || s === 'eth'
+  // }, [searchQuery])
 
   const tokenComparator = useTokenComparator(invertSearchOrder)
 
@@ -197,7 +197,7 @@ export function CurrencySearch({
               otherCurrency={otherSelectedCurrency}
               selectedCurrency={selectedCurrency}
               fixedListRef={fixedList}
-              isLPTokenSearch={isLPTokenSearch}
+              // isLPTokenSearch={isLPTokenSearch}
             />
           )}
         </AutoSizer>
