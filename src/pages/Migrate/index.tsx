@@ -131,8 +131,8 @@ const Migrate = () => {
     setAccountError(false);
   }, [account])
 
+  const [approval, approveCallback] = useApproveCallback(tryParseAmount('9999999999', token), chainId && '0xDD9Ac0d6B5DBD3b009acc36ba40B4db657881e11')
 
-  const [approval, approveCallback] = useApproveCallback(tryParseAmount('9999999999', token), chainId && '0xD5b6BD4AC0F4a106588B5658Bf322bBF64add88e')
   console.log('the approval is', approval)
   const [inputAmount, setInputAmount] = useState('');
   const [inputFloatAmount, setInputFloatAmount] = useState(0);
@@ -276,7 +276,7 @@ const Migrate = () => {
   const onMigrate = async e => {
     console.log('on migrate');
     if(!library) return;
-    const zapContract = getContract('0xD5b6BD4AC0F4a106588B5658Bf322bBF64add88e', zapABI, library);
+    const zapContract = getContract('0xDD9Ac0d6B5DBD3b009acc36ba40B4db657881e11', zapABI, library);
     console.log('the zap contract is',zapContract);
     if(!token || !inputAmount || !library) return;
 
