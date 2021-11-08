@@ -347,7 +347,7 @@ const Migrate = () => {
                   <Text style={{cursor: 'pointer'}} onClick={openTokenSelect}>
                   {token.name}
                 </Text>
-                : <Button style={{cursor: 'pointer', fontSize: 14}} onClick={openTokenSelect}>Choose an LP token</Button>}
+                : <Button variant="secondary" style={{cursor: 'pointer', fontSize: 14}} onClick={openTokenSelect}>Choose an LP token</Button>}
                 <br /><br />
                 <div style={{display: 'flex', justifyContent: 'space-between', boxSizing: 'border-box', height: 54, alignItems: 'center', padding: '10px 20px', borderRadius: 10, backgroundColor: '#242524', fontSize: 18, width: '100%'}}>
                 <input placeholder="0" value={inputAmount} type="number" onChange={onUpdateAmount} style={{color: '#fff', border: 'none', background: 'none', outline: 'none'}} />
