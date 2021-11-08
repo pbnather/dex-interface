@@ -10,7 +10,7 @@ import { useBlockNumber } from '../application/hooks'
 import { AppDispatch, AppState } from '../index'
 import {
   Call,
-  errorFetchingMulticallResults,
+  // errorFetchingMulticallResults,
   fetchingMulticallResults,
   parseCallKey,
   updateMulticallResults,
