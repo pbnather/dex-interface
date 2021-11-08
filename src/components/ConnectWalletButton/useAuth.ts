@@ -22,10 +22,8 @@ const useAuth = () => {
 
   const login = useCallback((connectorID: ConnectorNames) => {
     const storagekey = window.localStorage.getItem(connectorLocalStorageKey);
-    console.log('what is the storage key?!', storagekey, ConnectorNames)
 
     const connector = connectorsByName[connectorID]
-    console.log('the connector is', connector)
 
     if (connector) {
       activate(connector, async (error: Error) => {

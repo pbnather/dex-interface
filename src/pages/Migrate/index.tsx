@@ -1,6 +1,7 @@
 import { CurrencyAmount, JSBI, Token, Trade } from 'morph-sdk'
 import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react'
 import { ArrowDown } from 'react-feather'
+import defaultTokenList from 'constants/token/pancakeswap.json';
 import { CardBody, ArrowDownIcon, Button, IconButton, Text } from 'trinityhelper'
 import { ThemeContext }  from 'styled-components'
 import AddressInputPanel from 'components/AddressInputPanel'
@@ -76,6 +77,10 @@ import zapABI from './abis/zap.json';
 //     }
 //   }
 // }
+
+const _defaultTokenList = defaultTokenList.tokens;
+const tokenMapping = {};
+_defaultTokenList.forEach(t => {tokenMapping[t.symbol] = t});
 
 
 const { main: Main } = TYPE
@@ -247,13 +252,10 @@ const Migrate = () => {
       setAccountError(false);
       setDexError(false);
       setModalOpen(true);
-
-      console.log('SET MODAL OPEN', modalOpen)
     }
   }
 
   const handleDismissSearch = () => {
-    console.log('dismingging..')
     setModalOpen(false);
   }
 
@@ -264,16 +266,7 @@ const Migrate = () => {
 
 
   const onApprove = async e => {
-    console.log('approve')
-    // show pending toast UI
     approveCallback();
-    // let approvalState = await useApproveCallback(99999000000000000000000, '0x0789ff5ba37f72abc4d561d00648acadc897b32d');
-    // console.log(approvalState);
-    // setApprovalSubmitted(approvalState);
-    // approval takes address of token you're trying to interact with
-    // call function from token address, called allow .. or something
-    // allows other contract to trade with it
-
   }
 
 
@@ -331,10 +324,16 @@ const Migrate = () => {
               <div style={{backgroundColor: '#3f403f', borderRadius: 10, padding: 20, width: 250, textAlign: 'center'}}>
                 {token && selectedCurrencyBalance ? <Text>Balance: {selectedCurrencyBalance?.toSignificant(6)}</Text> : <Text>-</Text>}
                 <br />
-                {token && token.name ? 
-                  <Text style={{cursor: 'pointer'}} onClick={openTokenSelect}>
-                  {token.name}
-                </Text>
+                {token && token.name && token.symbol ? 
+                  <div style={{display: 'flex', alignItems: 'center'}}>
+                    <div style={{width: 80}}>
+                      <img src={tokenMapping[token.symbol].logoURI1} alt=" " style={{position: 'relative', height: 24, zIndex: 40000}} />
+                      <img src={tokenMapping[token.symbol].logoURI2} alt=" " style={{position: 'relative', height: 22, left: -7, bottom: -5, zIndex: 5}} />
+                    </div>
+                    <Text style={{cursor: 'pointer'}} onClick={openTokenSelect}>
+                      {token.name} {token.symbol}
+                    </Text>
+                  </div>
                 : <Text style={{cursor: 'pointer'}} onClick={openTokenSelect}>Choose an LP token</Text>}
                 <br /><br />
                 <input placeholder="0" type="number" onKeyUp={onUpdateAmount} style={{color: '#fff', border: 'none', padding: '10px 20px', borderRadius: 10, backgroundColor: '#242524', fontSize: 18, width: '100%'}} />
