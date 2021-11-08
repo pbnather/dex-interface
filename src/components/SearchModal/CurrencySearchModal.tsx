@@ -31,8 +31,6 @@ export default function CurrencySearchModal({
   const lastOpen = useLast(isOpen)
 
   useEffect(() => {
-    console.log('MODAL IS ', isOpen);
-
     if (isOpen && !lastOpen) {
       setListView(false)
     }

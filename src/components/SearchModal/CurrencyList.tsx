@@ -122,8 +122,8 @@ function CurrencyRow({
       {
         currency.symbol && tokenMapping && tokenMapping[currency.symbol] && tokenMapping[currency.symbol].lp ?
         <div style={{width: 50}}>
-          <img src={tokenMapping[currency.symbol].logoURI1} alt=" " style={{height: 24}} />
-          <img src={tokenMapping[currency.symbol].logoURI2} alt=" " style={{position: 'relative', height: 22, left: -7, bottom: -5, zIndex: -1}} />
+          <img src={tokenMapping[currency.symbol].logoURI1} alt=" " style={{position: 'relative', height: 24, zIndex: 50000}} />
+          <img src={tokenMapping[currency.symbol].logoURI2} alt=" " style={{position: 'relative', height: 22, left: -7, bottom: -5, zIndex: 5}} />
         </div>
         : <CurrencyLogo currency={currency} size="24px" />
       }
