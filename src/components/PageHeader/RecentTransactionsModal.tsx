@@ -65,7 +65,7 @@ const RecentTransactionsModal = ({ onDismiss = defaultOnDismiss }: RecentTransac
         chainId &&
         sortedRecentTransactions.map((sortedRecentTransaction) => {
           const { hash, summary } = sortedRecentTransaction
-          const { icon, color } = getRowStatus(sortedRecentTransaction)
+          const { icon } = getRowStatus(sortedRecentTransaction)
 
           return (
             <>

@@ -168,7 +168,7 @@ function CurrencyRow({
 }
 
 export default function CurrencyList({
-  isLPTokenSearch,
+  // isLPTokenSearch,
   height,
   currencies,
   selectedCurrency,
@@ -177,7 +177,7 @@ export default function CurrencyList({
   fixedListRef,
   showETH,
 }: {
-  isLPTokenSearch?: boolean
+  // isLPTokenSearch?: boolean
   height: number
   currencies: Currency[]
   selectedCurrency?: Currency | null

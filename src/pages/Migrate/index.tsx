@@ -1,8 +1,8 @@
-import { JSBI, Token, Trade } from 'morph-sdk'
-import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react'
+import { Token } from 'morph-sdk'
+import React, { useEffect, useState } from 'react'
 // import { ArrowDown } from 'react-feather'
 import { CardBody, Button, Text } from 'trinityhelper'
-import { ThemeContext }  from 'styled-components'
+// import { ThemeContext }  from 'styled-components'
 // import AddressInputPanel from 'components/AddressInputPanel'
 // import Card, { GreyCard } from 'components/Card'
 import CurrencySearchModal from 'components/SearchModal/CurrencySearchModal'
@@ -23,18 +23,18 @@ import { Wrapper } from 'components/swap/styleds'
 // import TokenWarningModal from 'components/TokenWarningModal'
 // import SyrupWarningModal from 'components/SyrupWarningModal'
 // import ProgressSteps from 'components/ProgressSteps'
-import { BETTER_TRADE_LINK_THRESHOLD } from 'constants/index'
-import { isTradeBetter } from 'data/V1'
+// import { BETTER_TRADE_LINK_THRESHOLD } from 'constants/index'
+// import { isTradeBetter } from 'data/V1'
 import { useActiveWeb3React } from 'hooks'
-import { useCurrency } from 'hooks/Tokens'
+// import { useCurrency } from 'hooks/Tokens'
 import { ApprovalState, useApproveCallback } from 'hooks/useApproveCallback'
 // import { useSwapCallback } from 'hooks/useSwapCallback'
 import useToggledVersion, { Version } from 'hooks/useToggledVersion'
 import useWrapCallback, { WrapType } from 'hooks/useWrapCallback'
 import { Field } from 'state/swap/actions'
-import { useDefaultsFromURLSearch, tryParseAmount, useDerivedSwapInfo, useSwapActionHandlers, useSwapState } from 'state/swap/hooks'
-import { useExpertModeManager, useUserDeadline, useUserSlippageTolerance } from 'state/user/hooks'
-import { TYPE } from 'components/Shared'
+import { tryParseAmount, useDerivedSwapInfo, useSwapState } from 'state/swap/hooks'
+// import { useExpertModeManager, useUserDeadline, useUserSlippageTolerance } from 'state/user/hooks'
+// import { TYPE } from 'components/Shared'
 // import { maxAmountSpend } from 'utils/maxAmountSpend'
 // import { computeTradePriceBreakdown, warningSeverity } from 'utils/prices'
 // import Loader from 'components/Loader'
@@ -108,14 +108,14 @@ const Migrate = () => {
   // }, [selectedCurrencyBalance])
 
 
-  const loadedUrlParams = useDefaultsFromURLSearch()
+  // const loadedUrlParams = useDefaultsFromURLSearch()
 
 
   // token warning stuff
-  const [loadedInputCurrency, loadedOutputCurrency] = [
-    useCurrency(loadedUrlParams?.inputCurrencyId),
-    useCurrency(loadedUrlParams?.outputCurrencyId),
-  ]
+  // const [loadedInputCurrency, loadedOutputCurrency] = [
+  //   useCurrency(loadedUrlParams?.inputCurrencyId),
+  //   useCurrency(loadedUrlParams?.outputCurrencyId),
+  // ]
   // const [dismissTokenWarning, setDismissTokenWarning] = useState<boolean>(false)
   // const [isSyrup, setIsSyrup] = useState<boolean>(false)
   // const [syrupTransactionType, setSyrupTransactionType] = useState<string>('')
@@ -131,7 +131,7 @@ const Migrate = () => {
 
   const [approval, approveCallback] = useApproveCallback(tryParseAmount('9999999999', token), chainId && '0xDD9Ac0d6B5DBD3b009acc36ba40B4db657881e11')
 
-  console.log('the approval is', approval)
+  // console.log('the approval is', approval)
   const [inputAmount, setInputAmount] = useState('');
   const [inputFloatAmount, setInputFloatAmount] = useState(0);
 
@@ -144,16 +144,16 @@ const Migrate = () => {
   // const [allowedSlippage] = useUserSlippageTolerance()
 
   // swap state
-  const { independentField, typedValue } = useSwapState()
+  const { typedValue } = useSwapState()
   const {
     v1Trade,
     v2Trade,
     // currencyBalances,
-    parsedAmount,
+    // parsedAmount,
     currencies,
-    inputError: swapInputError,
+    // inputError: swapInputError,
   } = useDerivedSwapInfo()
-  const { wrapType, execute: onWrap, inputError: wrapInputError } = useWrapCallback(
+  const { wrapType } = useWrapCallback(
     currencies[Field.INPUT],
     currencies[Field.OUTPUT],
     typedValue
@@ -175,34 +175,34 @@ const Migrate = () => {
   //     ? Version.v2
   //     : undefined
 
-  const parsedAmounts = showWrap
-    ? {
-        [Field.INPUT]: parsedAmount,
-        [Field.OUTPUT]: parsedAmount,
-      }
-    : {
-        [Field.INPUT]: independentField === Field.INPUT ? parsedAmount : trade?.inputAmount,
-        [Field.OUTPUT]: independentField === Field.OUTPUT ? parsedAmount : trade?.outputAmount,
-      }
+  // const parsedAmounts = showWrap
+  //   ? {
+  //       [Field.INPUT]: parsedAmount,
+  //       [Field.OUTPUT]: parsedAmount,
+  //     }
+  //   : {
+  //       [Field.INPUT]: independentField === Field.INPUT ? parsedAmount : trade?.inputAmount,
+  //       [Field.OUTPUT]: independentField === Field.OUTPUT ? parsedAmount : trade?.outputAmount,
+  //     }
 
   // const { onSwitchTokens, onCurrencySelection, onUserInput, onChangeRecipient } = useSwapActionHandlers()
   // const isValid = !swapInputError
-  const dependentField: Field = independentField === Field.INPUT ? Field.OUTPUT : Field.INPUT
+  // const dependentField: Field = independentField === Field.INPUT ? Field.OUTPUT : Field.INPUT
 
   // modal and loading
-  const [{ showConfirm, tradeToConfirm, swapErrorMessage, attemptingTxn, txHash }, setSwapState] = useState<{
-    showConfirm: boolean
-    tradeToConfirm: Trade | undefined
-    attemptingTxn: boolean
-    swapErrorMessage: string | undefined
-    txHash: string | undefined
-  }>({
-    showConfirm: false,
-    tradeToConfirm: undefined,
-    attemptingTxn: false,
-    swapErrorMessage: undefined,
-    txHash: undefined,
-  })
+  // const [{ showConfirm, tradeToConfirm, swapErrorMessage, attemptingTxn, txHash }, setSwapState] = useState<{
+  //   showConfirm: boolean
+  //   tradeToConfirm: Trade | undefined
+  //   attemptingTxn: boolean
+  //   swapErrorMessage: string | undefined
+  //   txHash: string | undefined
+  // }>({
+  //   showConfirm: false,
+  //   tradeToConfirm: undefined,
+  //   attemptingTxn: false,
+  //   swapErrorMessage: undefined,
+  //   txHash: undefined,
+  // })
 
   // const formattedAmounts = {
   //   [independentField]: typedValue,
@@ -211,7 +211,7 @@ const Migrate = () => {
   //     : parsedAmounts[dependentField]?.toSignificant(6) ?? '',
   // }
 
-  const route = trade?.route
+  // const route = trade?.route
   // const userHasSpecifiedInputOutput = Boolean(
   //   currencies[Field.INPUT] && currencies[Field.OUTPUT] && parsedAmounts[independentField]?.greaterThan(JSBI.BigInt(0))
   // )
@@ -242,9 +242,9 @@ const Migrate = () => {
     setToken(_token);
   }
 
-  const openTokenSelect = e => {
+  const openTokenSelect = () => {
     if(!account) {
-      console.log('account error!')
+      // console.log('account error!')
       setAccountError(true);
     } else if(!dex) {
       setAccountError(false);
@@ -254,12 +254,12 @@ const Migrate = () => {
       setDexError(false);
       setModalOpen(true);
 
-      console.log('SET MODAL OPEN', modalOpen)
+      // console.log('SET MODAL OPEN', modalOpen)
     }
   }
 
   const handleDismissSearch = () => {
-    console.log('dismingging..')
+    // console.log('dismingging..')
     setModalOpen(false);
   }
 
@@ -277,7 +277,9 @@ const Migrate = () => {
   }
 
 
-  const onApprove = async e => {
+  const onApprove = () => {
+    // console.log('approve')
+    // show pending toast UI
     approveCallback();
     // let approvalState = await useApproveCallback(99999000000000000000000, '0x0789ff5ba37f72abc4d561d00648acadc897b32d');
     // console.log(approvalState);
@@ -291,11 +293,10 @@ const Migrate = () => {
 
 
 
-      
+// eslint-disable-next-line
   const onMigrate = async e => {
-    if(!library) return;
-    const zapContract = getContract('0xDD9Ac0d6B5DBD3b009acc36ba40B4db657881e11', zapABI, library);
     if(!token || !inputAmount || !library) return;
+    const zapContract = getContract('0xDD9Ac0d6B5DBD3b009acc36ba40B4db657881e11', zapABI, library);
 
     const typedValueParsed = parseUnits(inputAmount, token.decimals).toString()
     console.log('THE TYPEF VaLUE', typedValueParsed)
@@ -304,9 +305,10 @@ const Migrate = () => {
 
     const signer = zapContract.connect(library.getSigner());
     if(!signer) {
-      console.log('no signer//error');
+      // console.log('no signer//error');
       // return;
     }
+    // eslint-disable-next-line
     const zapped = await signer.zapAcross(
       token.address, // token address
       typedValueParsed, // amount to transfer

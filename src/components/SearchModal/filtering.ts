@@ -53,9 +53,9 @@ export function filterTokens(tokens: Token[], search: string, lpTokens?: boolean
   return tokens.filter((token) => {
     const { symbol, name } = token
 
-    console.log('DEFAULT TOKENJSON', defaultTokenJson, typeof defaultTokenJson)
+    // console.log('DEFAULT TOKENJSON', defaultTokenJson, typeof defaultTokenJson)
     if(lpTokens) {
-      console.log(defaultTokenJson, typeof defaultTokenJson)
+      // console.log(defaultTokenJson, typeof defaultTokenJson)
     } 
 
     return (symbol && matchesSearch(symbol)) || (name && matchesSearch(name))

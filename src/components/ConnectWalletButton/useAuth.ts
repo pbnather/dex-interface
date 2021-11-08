@@ -21,7 +21,7 @@ const useAuth = () => {
   const { toastError } = useToast()
 
   const login = useCallback((connectorID: ConnectorNames) => {
-    const storagekey = window.localStorage.getItem(connectorLocalStorageKey);
+    // const storagekey = window.localStorage.getItem(connectorLocalStorageKey);
 
     const connector = connectorsByName[connectorID]
 

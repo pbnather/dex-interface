@@ -49,7 +49,7 @@ export default function CommonBases({
         <BaseWrapper
           onClick={() => {
             if (!selectedCurrency || !currencyEquals(selectedCurrency, ETHER)) {
-              console.log('selecting ether!')
+              // console.log('selecting ether!')
               onSelect(ETHER)
             }
           }}
