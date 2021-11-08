@@ -299,7 +299,6 @@ const Migrate = () => {
     const zapContract = getContract('0xDD9Ac0d6B5DBD3b009acc36ba40B4db657881e11', zapABI, library);
 
     const typedValueParsed = parseUnits(inputAmount, token.decimals).toString()
-    console.log('THE TYPEF VaLUE', typedValueParsed)
     // call zap contract function here with approved LP token
     // https://ftmscan.com/tx/0x05448d7b1d1b3d18bf8e48a4aa5246539580820abdc5c4bd468e9bc20e15aedf
 
