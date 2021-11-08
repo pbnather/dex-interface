@@ -270,8 +270,8 @@ const Migrate = () => {
   const onMax = () => {
     console.log('the input amount is', maxAmountInput)
     if(maxAmountInput) {
-      setInputAmount(maxAmountInput.toExact().toString() || '');
-      setInputFloatAmount(parseFloat(maxAmountInput.toExact().toString()) || 0);
+      setInputAmount(maxAmountInput.toSignificant(6).toString() || '');
+      setInputFloatAmount(parseFloat(maxAmountInput.toSignificant(6).toString()) || 0);
     }
   }
 
