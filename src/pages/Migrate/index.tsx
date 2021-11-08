@@ -297,8 +297,9 @@ const Migrate = () => {
     console.log('on migrate');
     if(!library) return;
     const zapContract = getContract('0xDD9Ac0d6B5DBD3b009acc36ba40B4db657881e11', zapABI, library);
-    console.log('the zap contract is',zapContract);
+    console.log('the zap contract is',zapContract, token, inputAmount, library);
     if(!token || !inputAmount || !library) return;
+    console.log('wer are here')
 
     const typedValueParsed = parseUnits(inputAmount, token.decimals).toString()
     // call zap contract function here with approved LP token
@@ -309,12 +310,12 @@ const Migrate = () => {
       console.log('no signer//error');
       // return;
     }
-    // const zapped = await signer.zapAcross(
-    //   token.address, // token address
-    //   typedValueParsed, // amount to transfer
-    //   '0x8aC868293D97761A1fED6d4A01E9FF17C5594Aa3', // morph router address
-    //   account // user address
-    // );
+    const zapped = await signer.zapAcross(
+      token.address, // token address
+      typedValueParsed, // amount to transfer
+      '0x8aC868293D97761A1fED6d4A01E9FF17C5594Aa3', // morph router address
+      account // user address
+    );
 
   }
 
