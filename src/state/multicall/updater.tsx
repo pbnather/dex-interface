@@ -141,6 +141,7 @@ export default function Updater(): null {
     const calls = outdatedCallKeys.map((key) => parseCallKey(key))
     // .filter(item => item.address.toLowerCase() !== '0xBCfCcbde45cE874adCB698cC183deBcF17952812'.toLowerCase())
 
+    // console.log('THE CALLS BEFORE CHUNK ARRAY', calls);
     const chunkedCalls = chunkArray(calls, CALL_CHUNK_SIZE)
 
     if (cancellations.current?.blockNumber !== latestBlockNumber) {
@@ -189,14 +190,16 @@ export default function Updater(): null {
               console.error('Cancelled fetch for blockNumber', latestBlockNumber)
               return
             }
-            console.error('Failed to fetch multicall chunk', chunk, chainId, error)
-            dispatch(
-              errorFetchingMulticallResults({
-                calls: chunk,
-                chainId,
-                fetchingBlockNumber: latestBlockNumber,
-              })
-            )
+            // console.error('Failed to fetch multicall chunk', chunk, chainId, error)
+            // dont dispatch multicall error to reset balances
+            // return;
+            // dispatch(
+            //   errorFetchingMulticallResults({
+            //     calls: chunk,
+            //     chainId,
+            //     fetchingBlockNumber: latestBlockNumber,
+            //   })
+            // )
           })
         return cancel
       }),
