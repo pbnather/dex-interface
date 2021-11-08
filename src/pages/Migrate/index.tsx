@@ -1,55 +1,55 @@
-import { CurrencyAmount, JSBI, Token, Trade } from 'morph-sdk'
+import { JSBI, Token, Trade } from 'morph-sdk'
 import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react'
-import { ArrowDown } from 'react-feather'
-import { CardBody, ArrowDownIcon, Button, IconButton, Text } from 'trinityhelper'
+// import { ArrowDown } from 'react-feather'
+import { CardBody, Button, Text } from 'trinityhelper'
 import { ThemeContext }  from 'styled-components'
-import AddressInputPanel from 'components/AddressInputPanel'
-import Card, { GreyCard } from 'components/Card'
+// import AddressInputPanel from 'components/AddressInputPanel'
+// import Card, { GreyCard } from 'components/Card'
 import CurrencySearchModal from 'components/SearchModal/CurrencySearchModal'
-import { AutoColumn } from 'components/Column'
-import ConfirmSwapModal from 'components/swap/ConfirmSwapModal'
+// import { AutoColumn } from 'components/Column'
+// import ConfirmSwapModal from 'components/swap/ConfirmSwapModal'
 
-import { useSingleCallResult } from 'state/multicall/hooks'
+// import { useSingleCallResult } from 'state/multicall/hooks'
 
-import CurrencyInputPanel from 'components/CurrencyInputPanel'
-import CurrencyLogo from 'components/CurrencyLogo'
+// import CurrencyInputPanel from 'components/CurrencyInputPanel'
+// import CurrencyLogo from 'components/CurrencyLogo'
 import CardNav from 'components/CardNav'
-import { AutoRow, RowBetween, RowFixed } from 'components/Row'
+import { RowBetween } from 'components/Row'
 import AdvancedSwapDetailsDropdown from 'components/swap/AdvancedSwapDetailsDropdown'
-import BetterTradeLink from 'components/swap/BetterTradeLink'
-import confirmPriceImpactWithoutFee from 'components/swap/confirmPriceImpactWithoutFee'
-import { ArrowWrapper, BottomGrouping, SwapCallbackError, Wrapper } from 'components/swap/styleds'
-import TradePrice from 'components/swap/TradePrice'
-import TokenWarningModal from 'components/TokenWarningModal'
-import SyrupWarningModal from 'components/SyrupWarningModal'
-import ProgressSteps from 'components/ProgressSteps'
-import { BETTER_TRADE_LINK_THRESHOLD, INITIAL_ALLOWED_SLIPPAGE } from 'constants/index'
+// import BetterTradeLink from 'components/swap/BetterTradeLink'
+// import confirmPriceImpactWithoutFee from 'components/swap/confirmPriceImpactWithoutFee'
+import { Wrapper } from 'components/swap/styleds'
+// import TradePrice from 'components/swap/TradePrice'
+// import TokenWarningModal from 'components/TokenWarningModal'
+// import SyrupWarningModal from 'components/SyrupWarningModal'
+// import ProgressSteps from 'components/ProgressSteps'
+import { BETTER_TRADE_LINK_THRESHOLD } from 'constants/index'
 import { isTradeBetter } from 'data/V1'
 import { useActiveWeb3React } from 'hooks'
 import { useCurrency } from 'hooks/Tokens'
-import { ApprovalState, useApproveCallbackFromTrade, useApproveCallback } from 'hooks/useApproveCallback'
-import { useSwapCallback } from 'hooks/useSwapCallback'
+import { ApprovalState, useApproveCallback } from 'hooks/useApproveCallback'
+// import { useSwapCallback } from 'hooks/useSwapCallback'
 import useToggledVersion, { Version } from 'hooks/useToggledVersion'
 import useWrapCallback, { WrapType } from 'hooks/useWrapCallback'
 import { Field } from 'state/swap/actions'
 import { useDefaultsFromURLSearch, tryParseAmount, useDerivedSwapInfo, useSwapActionHandlers, useSwapState } from 'state/swap/hooks'
 import { useExpertModeManager, useUserDeadline, useUserSlippageTolerance } from 'state/user/hooks'
-import { LinkStyledButton, TYPE } from 'components/Shared'
-import { maxAmountSpend } from 'utils/maxAmountSpend'
-import { computeTradePriceBreakdown, warningSeverity } from 'utils/prices'
-import Loader from 'components/Loader'
-import { TranslateString } from 'utils/translateTextHelpers'
+import { TYPE } from 'components/Shared'
+// import { maxAmountSpend } from 'utils/maxAmountSpend'
+// import { computeTradePriceBreakdown, warningSeverity } from 'utils/prices'
+// import Loader from 'components/Loader'
+// import { TranslateString } from 'utils/translateTextHelpers'
 import PageHeader from 'components/PageHeader'
-import { Contract } from '@ethersproject/contracts'
+// import { Contract } from '@ethersproject/contracts'
 import { parseUnits } from '@ethersproject/units'
-import { getContract, getRouterContract } from 'utils';
-import ConnectWalletButton from 'components/ConnectWalletButton'
-import { BigNumber } from '@ethersproject/bignumber'
+import { getContract } from 'utils';
+// import ConnectWalletButton from 'components/ConnectWalletButton'
+// import { BigNumber } from '@ethersproject/bignumber'
 
 import { useCurrencyBalance } from '../../state/wallet/hooks'
 
-import { SearchInput } from '../../components/SearchModal/styleds'
-import { useAllTokens, useToken } from '../../hooks/Tokens'
+// import { SearchInput } from '../../components/SearchModal/styleds'
+// import { useAllTokens, useToken } from '../../hooks/Tokens'
 import AppBody from '../AppBody'
 
 /*
@@ -78,10 +78,10 @@ import zapABI from './abis/zap.json';
 // }
 
 
-const { main: Main } = TYPE
+// const { main: Main } = TYPE
 
 const Migrate = () => {
-  const web3 = useActiveWeb3React();
+  // const web3 = useActiveWeb3React();
   const { account, chainId, library } = useActiveWeb3React();
   const [modalOpen, setModalOpen] = useState(false);
 
@@ -89,13 +89,13 @@ const Migrate = () => {
 
 
 
-  const [tokenSearch, setTokenSearch] = useState<string>('')
-  const handleTokenSearchChange = useCallback(e => setTokenSearch(e.target.value), [setTokenSearch])
+  // const [tokenSearch, setTokenSearch] = useState<string>('')
+  // const handleTokenSearchChange = useCallback(e => setTokenSearch(e.target.value), [setTokenSearch])
 
   // automatically add the search token
   // const token = useToken(tokenSearch)
   const [token, setToken] = useState<Token>();
-  const [balance, setBalance] = useState(null)
+  // const [balance, setBalance] = useState(null)
   const [dex, setDex] = useState(null);
   const [dexError, setDexError] = useState(false);
   const [accountError, setAccountError] = useState(false);
@@ -113,13 +113,13 @@ const Migrate = () => {
     useCurrency(loadedUrlParams?.inputCurrencyId),
     useCurrency(loadedUrlParams?.outputCurrencyId),
   ]
-  const [dismissTokenWarning, setDismissTokenWarning] = useState<boolean>(false)
-  const [isSyrup, setIsSyrup] = useState<boolean>(false)
-  const [syrupTransactionType, setSyrupTransactionType] = useState<string>('')
-  const urlLoadedTokens: Token[] = useMemo(
-    () => [loadedInputCurrency, loadedOutputCurrency]?.filter((c): c is Token => c instanceof Token) ?? [],
-    [loadedInputCurrency, loadedOutputCurrency]
-  )
+  // const [dismissTokenWarning, setDismissTokenWarning] = useState<boolean>(false)
+  // const [isSyrup, setIsSyrup] = useState<boolean>(false)
+  // const [syrupTransactionType, setSyrupTransactionType] = useState<string>('')
+  // const urlLoadedTokens: Token[] = useMemo(
+  //   () => [loadedInputCurrency, loadedOutputCurrency]?.filter((c): c is Token => c instanceof Token) ?? [],
+  //   [loadedInputCurrency, loadedOutputCurrency]
+  // )
 
   useEffect(() => {
     if(!account) return;
@@ -132,20 +132,20 @@ const Migrate = () => {
   const [inputAmount, setInputAmount] = useState('');
   const [inputFloatAmount, setInputFloatAmount] = useState(0);
 
-  const theme = useContext(ThemeContext)
+  // const theme = useContext(ThemeContext)
 
-  const [isExpertMode] = useExpertModeManager()
+  // const [isExpertMode] = useExpertModeManager()
 
   // get custom setting values for user
-  const [deadline] = useUserDeadline()
-  const [allowedSlippage] = useUserSlippageTolerance()
+  // const [deadline] = useUserDeadline()
+  // const [allowedSlippage] = useUserSlippageTolerance()
 
   // swap state
-  const { independentField, typedValue, recipient } = useSwapState()
+  const { independentField, typedValue } = useSwapState()
   const {
     v1Trade,
     v2Trade,
-    currencyBalances,
+    // currencyBalances,
     parsedAmount,
     currencies,
     inputError: swapInputError,
@@ -165,12 +165,12 @@ const Migrate = () => {
         [Version.v2]: v2Trade,
       }[toggledVersion]
 
-  const betterTradeLinkVersion: Version | undefined =
-    toggledVersion === Version.v2 && isTradeBetter(v2Trade, v1Trade, BETTER_TRADE_LINK_THRESHOLD)
-      ? Version.v1
-      : toggledVersion === Version.v1 && isTradeBetter(v1Trade, v2Trade)
-      ? Version.v2
-      : undefined
+  // const betterTradeLinkVersion: Version | undefined =
+  //   toggledVersion === Version.v2 && isTradeBetter(v2Trade, v1Trade, BETTER_TRADE_LINK_THRESHOLD)
+  //     ? Version.v1
+  //     : toggledVersion === Version.v1 && isTradeBetter(v1Trade, v2Trade)
+  //     ? Version.v2
+  //     : undefined
 
   const parsedAmounts = showWrap
     ? {
@@ -182,8 +182,8 @@ const Migrate = () => {
         [Field.OUTPUT]: independentField === Field.OUTPUT ? parsedAmount : trade?.outputAmount,
       }
 
-  const { onSwitchTokens, onCurrencySelection, onUserInput, onChangeRecipient } = useSwapActionHandlers()
-  const isValid = !swapInputError
+  // const { onSwitchTokens, onCurrencySelection, onUserInput, onChangeRecipient } = useSwapActionHandlers()
+  // const isValid = !swapInputError
   const dependentField: Field = independentField === Field.INPUT ? Field.OUTPUT : Field.INPUT
 
   // modal and loading
@@ -201,18 +201,18 @@ const Migrate = () => {
     txHash: undefined,
   })
 
-  const formattedAmounts = {
-    [independentField]: typedValue,
-    [dependentField]: showWrap
-      ? parsedAmounts[independentField]?.toExact() ?? ''
-      : parsedAmounts[dependentField]?.toSignificant(6) ?? '',
-  }
+  // const formattedAmounts = {
+  //   [independentField]: typedValue,
+  //   [dependentField]: showWrap
+  //     ? parsedAmounts[independentField]?.toExact() ?? ''
+  //     : parsedAmounts[dependentField]?.toSignificant(6) ?? '',
+  // }
 
   const route = trade?.route
-  const userHasSpecifiedInputOutput = Boolean(
-    currencies[Field.INPUT] && currencies[Field.OUTPUT] && parsedAmounts[independentField]?.greaterThan(JSBI.BigInt(0))
-  )
-  const noRoute = !route
+  // const userHasSpecifiedInputOutput = Boolean(
+  //   currencies[Field.INPUT] && currencies[Field.OUTPUT] && parsedAmounts[independentField]?.greaterThan(JSBI.BigInt(0))
+  // )
+  // const noRoute = !route
 
   // check whether the user has approved the router on the input token
   // const [approval, approveCallback] = useApproveCallbackFromTrade(trade, allowedSlippage)
@@ -294,14 +294,14 @@ const Migrate = () => {
     const signer = zapContract.connect(library.getSigner());
     if(!signer) {
       console.log('no signer//error');
-      return;
+      // return;
     }
-    const zapped = await signer.zapAcross(
-      token.address, // token address
-      typedValueParsed, // amount to transfer
-      '0x8aC868293D97761A1fED6d4A01E9FF17C5594Aa3', // morph router address
-      account // user address
-    );
+    // const zapped = await signer.zapAcross(
+    //   token.address, // token address
+    //   typedValueParsed, // amount to transfer
+    //   '0x8aC868293D97761A1fED6d4A01E9FF17C5594Aa3', // morph router address
+    //   account // user address
+    // );
 
   }
 
@@ -317,7 +317,7 @@ const Migrate = () => {
             <RowBetween my="1rem">
               <div style={{position: 'relative'}}>
               <div style={{borderWidth: 2, padding: 10, borderRadius: 15, display: 'inline', borderStyle: 'solid', borderColor: '#5eda6a'}}>
-                <select onChange={handleDexSelect} style={{outline: 'none', border: 'none', background: 'none', color: '#5eda6a', fontFamily: 'inherit', fontWeight: 600, fontSize: 18}}>
+                <select onChange={handleDexSelect} style={{outline: 'none', border: 'none', backgroundColor: '#242524', color: '#5eda6a', fontFamily: 'inherit', fontWeight: 600, fontSize: 18}}>
                   <option value="" disabled selected>DEX to migrate LPs from</option>
                   <option value="spooky">SpookySwap</option>
                   <option value="spirit">SpiritSwap</option>
