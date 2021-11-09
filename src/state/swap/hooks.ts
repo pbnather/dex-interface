@@ -90,8 +90,8 @@ export function tryParseAmount(value?: string, currency?: Currency): CurrencyAmo
 }
 
 const BAD_RECIPIENT_ADDRESSES: string[] = [
-  '0xEF45d134b73241eDa7703fa787148D9C9F4950b0', // v2 factory
-  '0x16327E3FbDaCA3bcF7E38F5Af2599D2DDc33aE52', // v2 router 01
+  '0x9C454510848906FDDc846607E4baa27Ca999FBB6', // v2 factory
+  '0x8aC868293D97761A1fED6d4A01E9FF17C5594Aa3', // v2 router 01
 ]
 
 /**
@@ -219,10 +219,10 @@ function parseCurrencyFromURLParameter(urlParam: any): string {
   if (typeof urlParam === 'string') {
     const valid = isAddress(urlParam)
     if (valid) return valid
-    if (urlParam.toUpperCase() === 'ETH') return 'ETH'
-    if (valid === false) return 'ETH'
+    if (urlParam.toUpperCase() === 'FTM') return 'FTM'
+    if (valid === false) return 'FTM'
   }
-  return 'ETH' ?? ''
+  return 'FTM' ?? ''
 }
 
 function parseTokenAmountURLParameter(urlParam: any): string {

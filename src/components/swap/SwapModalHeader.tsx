@@ -18,7 +18,6 @@ const { main: Main } = TYPE
 const PriceInfoText = styled(Text)`
   font-style: italic;
   line-height: 1.3;
-
   span {
     color: ${({ theme }) => theme.colors.textSubtle};
     font-weight: 600;
