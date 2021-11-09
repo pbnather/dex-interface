@@ -20,7 +20,7 @@ const PriceInfoText = styled(Text)`
   line-height: 1.3;
 
   span {
-    color: ${({ theme }) => theme.colors.primary};
+    color: ${({ theme }) => theme.colors.textSubtle};
     font-weight: 600;
   }
 `
@@ -54,7 +54,7 @@ export default function SwapModalHeader({
           <CurrencyLogo currency={trade.inputAmount.currency} size="24px" style={{ marginRight: '12px' }} />
           <Text
             fontSize="24px"
-            color={showAcceptChanges && trade.tradeType === TradeType.EXACT_OUTPUT ? theme.colors.primary : 'text'}
+            color={showAcceptChanges && trade.tradeType === TradeType.EXACT_OUTPUT ? theme.colors.textSubtle : 'text'}
           >
             {trade.inputAmount.toSignificant(6)}
           </Text>
@@ -106,7 +106,7 @@ export default function SwapModalHeader({
         {trade.tradeType === TradeType.EXACT_INPUT ? (
           <PriceInfoText>
             {`Output is estimated. You will receive at least `}
-            <span>
+            <span color="textSubtle">
               {slippageAdjustedAmounts[Field.OUTPUT]?.toSignificant(6)} {trade.outputAmount.currency.symbol}
             </span>
             {' or the transaction will revert.'}
@@ -114,7 +114,7 @@ export default function SwapModalHeader({
         ) : (
           <PriceInfoText>
             {`Input is estimated. You will sell at most `}
-            <span>
+            <span color="textSubtle">
               {slippageAdjustedAmounts[Field.INPUT]?.toSignificant(6)} {trade.inputAmount.currency.symbol}
             </span>
             {' or the transaction will revert.'}
