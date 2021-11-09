@@ -73,7 +73,7 @@ export function CurrencySearch({
 
   const audioPlay = useSelector<AppState, AppState['user']['audioPlay']>((state) => state.user.audioPlay)
 
-  
+
   const filteredTokens: Token[] = useMemo(() => {
     if (isAddressSearch) return searchToken ? [searchToken] : []
     return filterTokens(Object.values(allTokens), searchQuery, !!isLPTokenSearch, dex)
@@ -150,7 +150,7 @@ export function CurrencySearch({
       <PaddedColumn gap="14px">
         <RowBetween>
           <Text>
-            {isLPTokenSearch ? 
+            {isLPTokenSearch ?
               <TranslatedText translationId={82}>Select a LP token</TranslatedText>
               : <TranslatedText translationId={82}>Select a token</TranslatedText>}
             <QuestionHelper
@@ -165,7 +165,7 @@ export function CurrencySearch({
         <SearchInput
           type="text"
           id="token-search-input"
-          placeholder={t('tokenSearchPlaceholder')}
+          placeholder={t('Search for your token')}
           value={searchQuery}
           ref={inputRef as RefObject<HTMLInputElement>}
           onChange={handleInput}
@@ -176,7 +176,7 @@ export function CurrencySearch({
         )}
         <RowBetween>
           <Text fontSize="14px">
-            {isLPTokenSearch ? 
+            {isLPTokenSearch ?
               <TranslatedText translationId={82}>LP token name</TranslatedText>
               : <TranslatedText translationId={82}>Token name</TranslatedText>}
           </Text>
@@ -197,7 +197,7 @@ export function CurrencySearch({
               otherCurrency={otherSelectedCurrency}
               selectedCurrency={selectedCurrency}
               fixedListRef={fixedList}
-              // isLPTokenSearch={isLPTokenSearch}
+            // isLPTokenSearch={isLPTokenSearch}
             />
           )}
         </AutoSizer>
@@ -210,13 +210,13 @@ export function CurrencySearch({
             <RowBetween>
               {selectedListInfo.current ? (
                 <Row>
-                  {selectedListInfo.current && selectedListInfo.current.logoURI ? 
+                  {selectedListInfo.current && selectedListInfo.current.logoURI ?
                     <ListLogo
                       style={{ marginRight: 12 }}
                       logoURI={selectedListInfo.current.logoURI}
                       alt={`${selectedListInfo.current.name} list logo`}
                     /> : null
-                   }
+                  }
                   <Main id="currency-search-selected-list-name">{selectedListInfo.current.name}</Main>
                 </Row>
               ) : null}

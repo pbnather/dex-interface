@@ -125,7 +125,7 @@ const Migrate = () => {
   // )
 
   useEffect(() => {
-    if(!account) return;
+    if (!account) return;
     setAccountError(false);
   }, [account])
 
@@ -164,9 +164,9 @@ const Migrate = () => {
   const trade = showWrap
     ? undefined
     : {
-        [Version.v1]: v1Trade,
-        [Version.v2]: v2Trade,
-      }[toggledVersion]
+      [Version.v1]: v1Trade,
+      [Version.v2]: v2Trade,
+    }[toggledVersion]
 
   // const betterTradeLinkVersion: Version | undefined =
   //   toggledVersion === Version.v2 && isTradeBetter(v2Trade, v1Trade, BETTER_TRADE_LINK_THRESHOLD)
@@ -243,10 +243,10 @@ const Migrate = () => {
   }
 
   const openTokenSelect = () => {
-    if(!account) {
+    if (!account) {
       // console.log('account error!')
       setAccountError(true);
-    } else if(!dex) {
+    } else if (!dex) {
       setAccountError(false);
       setDexError(true);
     } else {
@@ -264,15 +264,16 @@ const Migrate = () => {
   }
 
   const onUpdateAmount = e => {
-    setInputAmount(e.target.value || '');
+    // Do not let people to input more than 18 decimal points
+    setInputAmount(parseFloat(e.target.value) !== 0 ? parseFloat(e.target.value).toFixed(18).replace(/\.?0+$/, "") : e.target.value || '');
     setInputFloatAmount(parseFloat(e.target.value) || 0);
   }
 
 
   const onMax = () => {
-    if(maxAmountInput) {
-      setInputAmount(maxAmountInput.toSignificant(6).toString() || '');
-      setInputFloatAmount(parseFloat(maxAmountInput.toSignificant(6).toString()) || 0);
+    if (maxAmountInput) {
+      setInputAmount(maxAmountInput.toExact().toString() || '');
+      setInputFloatAmount(parseFloat(maxAmountInput.toExact().toString()) || 0);
     }
   }
 
@@ -293,9 +294,9 @@ const Migrate = () => {
 
 
 
-// eslint-disable-next-line
+  // eslint-disable-next-line
   const onMigrate = async e => {
-    if(!token || !inputAmount || !library) return;
+    if (!token || !inputAmount || !library) return;
     const zapContract = getContract('0xDD9Ac0d6B5DBD3b009acc36ba40B4db657881e11', zapABI, library);
 
     const typedValueParsed = parseUnits(inputAmount, token.decimals).toString()
@@ -303,11 +304,13 @@ const Migrate = () => {
     // https://ftmscan.com/tx/0x05448d7b1d1b3d18bf8e48a4aa5246539580820abdc5c4bd468e9bc20e15aedf
 
     const signer = zapContract.connect(library.getSigner());
-    if(!signer) {
+    if (!signer) {
       // console.log('no signer//error');
       // return;
     }
     // eslint-disable-next-line
+    // console.log(inputAmount);
+    // console.log(typedValueParsed);
     const zapped = await signer.zapAcross(
       token.address, // token address
       typedValueParsed, // amount to transfer
@@ -322,37 +325,37 @@ const Migrate = () => {
       <CardNav activeIndex={2} />
       <AppBody width={600}>
         <Wrapper id="swap-page">
-         
+
           <PageHeader title="Migrate" description="Migrate your LP to Morpheus Swap" noSettings />
 
           <CardBody>
             <RowBetween my="1rem">
-              <div style={{position: 'relative'}}>
-              <div style={{borderWidth: 2, padding: 10, borderRadius: 15, display: 'inline', borderStyle: 'solid', borderColor: '#5eda6a'}}>
-                <select onChange={handleDexSelect} style={{outline: 'none', border: 'none', backgroundColor: '#242524', color: '#5eda6a', fontFamily: 'inherit', fontWeight: 600, fontSize: 18}}>
-                  <option value="" disabled selected>DEX to migrate LPs from</option>
-                  <option value="spooky">SpookySwap</option>
-                  <option value="spirit">SpiritSwap</option>
-                </select>
-              </div>
-              <br /><br />
-              {dexError ? <Text style={{position: 'absolute', left: 50, bottom: -25, color: 'rgb(175, 52, 52)', fontWeight: 200}}>Select a DEX first</Text> : ''}
-              {accountError ? <Text style={{position: 'absolute', left: 30, bottom: -25, color: 'rgb(175, 52, 52)', fontWeight: 200}}>Connect your wallet first</Text> : ''}
+              <div style={{ position: 'relative' }}>
+                <div style={{ borderWidth: 2, padding: 10, borderRadius: 15, display: 'inline', borderStyle: 'solid', borderColor: '#5eda6a' }}>
+                  <select onChange={handleDexSelect} style={{ outline: 'none', border: 'none', backgroundColor: '#242524', color: '#5eda6a', fontFamily: 'inherit', fontWeight: 600, fontSize: 18 }}>
+                    <option value="" disabled selected>DEX to migrate LPs from</option>
+                    <option value="spooky">SpookySwap</option>
+                    <option value="spirit">SpiritSwap</option>
+                  </select>
+                </div>
+                <br /><br />
+                {dexError ? <Text style={{ position: 'absolute', left: 50, bottom: -25, color: 'rgb(175, 52, 52)', fontWeight: 200 }}>Select a DEX first</Text> : ''}
+                {accountError ? <Text style={{ position: 'absolute', left: 30, bottom: -25, color: 'rgb(175, 52, 52)', fontWeight: 200 }}>Connect your wallet first</Text> : ''}
               </div>
 
-              <div style={{backgroundColor: '#3f403f', borderRadius: 10, padding: 20, width: 280, textAlign: 'center'}}>
+              <div style={{ backgroundColor: '#3f403f', borderRadius: 10, padding: 20, width: 280, textAlign: 'center' }}>
                 {token && selectedCurrencyBalance ? <Text>Balance: {selectedCurrencyBalance?.toSignificant(6)}</Text> : <Text>-</Text>}
                 <br />
-                {token && token.name ? 
-                  <Text style={{cursor: 'pointer'}} onClick={openTokenSelect}>
-                  {token.name}
-                </Text>
-                : <Button variant="secondary" style={{cursor: 'pointer', fontSize: 14}} onClick={openTokenSelect}>Choose an LP token</Button>}
+                {token && token.name ?
+                  <Text style={{ cursor: 'pointer' }} onClick={openTokenSelect}>
+                    {token.name}
+                  </Text>
+                  : <Button variant="secondary" style={{ cursor: 'pointer', fontSize: 14 }} onClick={openTokenSelect}>Choose an LP token</Button>}
                 <br /><br />
-                <div style={{display: 'flex', justifyContent: 'space-between', boxSizing: 'border-box', height: 54, alignItems: 'center', padding: '10px 20px', borderRadius: 10, backgroundColor: '#242524', fontSize: 18, width: '100%'}}>
-                <input placeholder="0" value={inputAmount} type="number" onChange={onUpdateAmount} style={{color: '#fff', border: 'none', background: 'none', outline: 'none'}} />
-                 {account && token && (
-                    <Button onClick={onMax} scale="sm" variant="text" style={{position: 'relative', left: -5}}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', boxSizing: 'border-box', height: 54, alignItems: 'center', padding: '10px 20px', borderRadius: 10, backgroundColor: '#242524', fontSize: 18, width: '100%' }}>
+                  <input placeholder="0" value={inputAmount} type="number" onChange={onUpdateAmount} style={{ color: '#fff', border: 'none', background: 'none', outline: 'none' }} />
+                  {account && token && (
+                    <Button onClick={onMax} scale="sm" variant="text" style={{ position: 'relative', left: -5 }}>
                       MAX
                     </Button>
                   )}
@@ -362,41 +365,41 @@ const Migrate = () => {
             </RowBetween>
 
             <br />
-              {!token ? 
-              <div><Button disabled style={{width: '100%'}}>SELECT TOKEN</Button></div>
+            {!token ?
+              <div><Button disabled style={{ width: '100%' }}>SELECT TOKEN</Button></div>
               : <div>
 
-                  {(selectedCurrencyBalance && inputFloatAmount > parseFloat(selectedCurrencyBalance?.toSignificant(6)) || (selectedCurrencyBalance && selectedCurrencyBalance?.toSignificant(6) === '0')) ?
-                  <Button disabled style={{width: '100%'}}>Insufficient balance</Button>
+                {(inputFloatAmount <= 0) || (selectedCurrencyBalance && inputFloatAmount > parseFloat(selectedCurrencyBalance?.toExact()) || (selectedCurrencyBalance && selectedCurrencyBalance?.toSignificant(6) === '0')) ?
+                  <Button disabled style={{ width: '100%' }}>Insufficient balance</Button>
 
                   :
                   <RowBetween >
-                    <Button disabled={approval === ApprovalState.APPROVED} style={{width: '49%'}} onClick={onApprove}>Approve</Button> 
-                    <Button disabled={approval !== ApprovalState.APPROVED} style={{width: '49%'}} onClick={onMigrate}>Migrate</Button>
+                    <Button disabled={approval === ApprovalState.APPROVED} style={{ width: '49%' }} onClick={onApprove}>Approve</Button>
+                    <Button disabled={approval !== ApprovalState.APPROVED} style={{ width: '49%' }} onClick={onMigrate}>Migrate</Button>
                   </RowBetween>
-                  }
-                </div>
-              }
-            
+                }
+              </div>
+            }
+
 
           </CardBody>
 
-            <CurrencySearchModal
-              isOpen={modalOpen}
-              onDismiss={handleDismissSearch}
-              onCurrencySelect={onCurrencySelect}
-              selectedCurrency={token || null}
-              isLPTokenSearch
-              dex={dex || ''}
-              // otherSelectedCurrency={otherCurrency}
-              // showCommonBases={showCommonBases}
-            />
+          <CurrencySearchModal
+            isOpen={modalOpen}
+            onDismiss={handleDismissSearch}
+            onCurrencySelect={onCurrencySelect}
+            selectedCurrency={token || null}
+            isLPTokenSearch
+            dex={dex || ''}
+          // otherSelectedCurrency={otherCurrency}
+          // showCommonBases={showCommonBases}
+          />
 
 
         </Wrapper>
       </AppBody>
       <AdvancedSwapDetailsDropdown trade={trade} />
-      
+
     </>
   )
 }
