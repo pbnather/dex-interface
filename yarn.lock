@@ -10773,10 +10773,10 @@ moment@^2.27.0:
   resolved "https://registry.yarnpkg.com/moment/-/moment-2.29.1.tgz"
   integrity sha512-kHmoybcPV8Sqy59DwNDY3Jefr64lK/by/da0ViFcuA4DH0vQg5Q6Ze5VimxkfQNSC+Mls/Kx53s7TjP1RhFEDQ==
 
-morph-sdk@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/morph-sdk/-/morph-sdk-1.0.1.tgz#f097fb77e30d146362dc7242680ba72a81fa5d64"
-  integrity sha512-IpD/tuES6gLGq0xINyfs50kK+ZQUxUVnsOJp/r+wIpNjX4AkW0n2h0Qysnlxo+DbjmtBTi+fwnWGbmezxdr1SQ==
+morph-sdk@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/morph-sdk/-/morph-sdk-1.0.2.tgz#b27349134bd112842d2d3e6ee687ba482b2a4959"
+  integrity sha512-5ganFWvZVahICjpc+GTBQiyzyEXIOtAABiewOBretQVpVd8Q33qLJkMek5J2uFRluTwpxEErZRqfZhX18+lRgg==
   dependencies:
     "@uniswap/v2-core" "^1.0.0"
     big.js "^5.2.2"
