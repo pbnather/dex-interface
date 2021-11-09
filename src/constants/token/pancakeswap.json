@@ -29,14 +29,7 @@
       "decimals": 6,
       "logoURI": "https://assets.coingecko.com/coins/images/325/large/Tether-logo.png"
     },
-    {
-      "name": "IceToken",
-      "symbol": "ICE",
-      "address": "0xf16e81dce15B08F326220742020379B855B87DF9",
-      "chainId": 250,
-      "decimals": 18,
-      "logoURI": "https://zapper.fi/images/ICE-icon.png"
-    },
+   
     {
       "name": "USD Coin",
       "symbol": "USDC",
@@ -69,14 +62,7 @@
       "decimals": 18,
       "logoURI": "https://assets.spookyswap.finance/coins/0x21be370D5312f44cB42ce377BC9b8a0cEF1A4C83.png"
     },
-    {
-      "name": "yearn.finance",
-      "symbol": "YFI",
-      "address": "0x29b0Da86e484E1C0029B56e817912d778aC0EC69",
-      "chainId": 250,
-      "decimals": 18,
-      "logoURI": "https://assets.coingecko.com/coins/images/11849/large/yfi-192x192.png"
-    },
+    
     {
       "name": "Magic Internet Money",
       "symbol": "MIM",
@@ -86,23 +72,7 @@
       "logoURI": "https://assets.coingecko.com/coins/images/16786/large/mimlogopng.png"
     },
 
-    {
-      "name": "Morpheus Token",
-      "symbol": "MORPH",
-      "address": "0x0789fF5bA37f72ABC4D561D00648acaDC897b32d",
-      "chainId": 250,
-      "decimals": 18,
-      "logoURI": "https://assets.spookyswap.finance/tokens/MORPH.png"
-    },
-    {
-      "name": "Spell Token",
-      "symbol": "SPELL",
-      "address": "0x468003B688943977e6130F4F68F23aad939a1040",
-      "chainId": 250,
-      "decimals": 18,
-      "logoURI": "https://assets.spookyswap.finance/tokens/SPELL.png"
-    },
-
+   
 
     {
       "lp": true,
